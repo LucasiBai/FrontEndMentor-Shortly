@@ -1,35 +1,38 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavigationModule } from './modules/navigation/navigation.module';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, NavigationModule],
+      declarations: [AppComponent],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it('Should create the app', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'shortly'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('shortly');
+  it('Should contain router-outlet', () => {
+    const routerOutlet =
+      fixture.debugElement.nativeElement.querySelector('router-outlet');
+
+    expect(routerOutlet).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('shortly app is running!');
+  it('Should contain nav-bar', () => {
+    const navBar =
+      fixture.debugElement.nativeElement.querySelector('app-nav-bar');
+
+    expect(navBar).toBeTruthy();
   });
 });

@@ -1,27 +1,57 @@
-# Shortly
+# Frontend Mentor - Interactive comments section Solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+## Welcome! 👋
 
-## Development server
+This is a solution to the [URL shortening API landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G/hub).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of contents
 
-## Code scaffolding
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#solution-screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Overview
 
-## Build
+## The challenge
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Your challenge is to build out this landing page, integrate with the [shrtcode API](https://app.shrtco.de/) and get it looking as close to the design as possible.
 
-## Running unit tests
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Your users should be able to:
 
-## Running end-to-end tests
+- View the optimal layout for the site depending on their device's screen size
+- Shorten any valid URL
+- See a list of their shortened links, even after refreshing the browser
+- Copy the shortened link to their clipboard in a single click
+- Receive an error message when the `form` is submitted if:
+  - The `input` field is empty
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<!-- ### Solution Screenshot
 
-## Further help
+#### Desktop View
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+#### Mobile View -->
+
+<!-- ### Links
+
+- Solution URL: https://interactive-buttons-fem-lucasibai.netlify.app/ -->
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- [SCSS](https://sass-lang.com/)
+- Mobile-first workflow
+- [Angular](https://angular.io/) - JS library
+
+## Author
+
+- Website - [LucasiBai](https://github.com/LucasiBai)
+- Frontend Mentor - [@LucasiBai](https://www.frontendmentor.io/profile/LucasiBai)
