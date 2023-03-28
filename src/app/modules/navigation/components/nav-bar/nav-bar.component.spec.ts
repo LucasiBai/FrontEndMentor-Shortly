@@ -19,4 +19,21 @@ describe('NavBarComponent', () => {
   it('Should render component', () => {
     expect(component).toBeTruthy();
   });
+
+  it("Should contain Shorly's logo", () => {
+    const logo = fixture.debugElement.nativeElement.querySelector('img');
+
+    expect(logo).toBeTruthy();
+    expect(logo.getAttribute('src')).toEqual('./assets/images/logo.svg');
+    expect(logo.getAttribute('alt')).toEqual('Shortly');
+  });
+
+  describe('Test mobile NavBar', () => {
+    it('Should contain burger button', () => {
+      const burgerButton =
+        fixture.debugElement.nativeElement.querySelector('button');
+
+      expect(burgerButton).toBeTruthy();
+    });
+  });
 });
