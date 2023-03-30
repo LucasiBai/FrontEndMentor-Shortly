@@ -1,0 +1,25 @@
+button {
+  background: none;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  div {
+    width: 1.5rem;
+    height: 3px;
+    background-color: hsl(0, 1%, 64%);
+  }
+}
+
+span {
+  top: -200vh;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+span.active {
+  top: 0;
+}

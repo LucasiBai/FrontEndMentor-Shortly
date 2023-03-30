@@ -1,0 +1,12 @@
+<button (click)="showNav()">
+  <div></div>
+  <div></div>
+  <div></div>
+</button>
+<span [ngClass]="{ active: show }">
+  <ul>
+    <li *ngFor="let link of links">
+      <a>{{ link.label }}</a>
+    </li>
+  </ul>
+</span>
