@@ -3,10 +3,12 @@
   <div></div>
   <div></div>
 </button>
+
 <span [ngClass]="{ active: show }">
   <ul>
     <li *ngFor="let link of links">
       <a>{{ link.label }}</a>
     </li>
   </ul>
+  <div (click)="showNav()"></div>
 </span>

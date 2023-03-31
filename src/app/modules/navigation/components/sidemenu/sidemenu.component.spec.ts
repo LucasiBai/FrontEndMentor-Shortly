@@ -47,7 +47,6 @@ describe('Test Sidemenu', () => {
   describe('Test showNav()', () => {
     it('Should show nav items in screen', () => {
       const hideNav = fixture.debugElement.nativeElement.querySelector('span');
-      console.log(hideNav);
 
       expect(hideNav.getAttribute('class')).not.toEqual('active');
 
@@ -55,6 +54,18 @@ describe('Test Sidemenu', () => {
       fixture.detectChanges();
 
       expect(hideNav.getAttribute('class')).toEqual('active');
+    });
+
+    it('Should hide nav items in screen if it is open', () => {
+      const hideNav = fixture.debugElement.nativeElement.querySelector('span');
+
+      component.showNav();
+      fixture.detectChanges();
+      expect(hideNav.getAttribute('class')).toEqual('active');
+
+      component.showNav();
+      fixture.detectChanges();
+      expect(hideNav.getAttribute('class')).not.toEqual('active');
     });
   });
 });

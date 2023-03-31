@@ -12,6 +12,6 @@ export class SidemenuComponent {
   show: boolean = false;
 
   public showNav(): void {
-    this.show = true;
+    this.show = !this.show;
   }
 }
