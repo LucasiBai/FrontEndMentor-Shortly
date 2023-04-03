@@ -9,6 +9,9 @@
     <li *ngFor="let link of links">
       <a>{{ link.label }}</a>
     </li>
+    <li>
+      <app-text-button [type]="'large'">Sign Up</app-text-button>
+    </li>
   </ul>
   <div (click)="showNav()"></div>
 </span>

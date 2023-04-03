@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { LinkI } from '../../models/link-i';
 
 import { SidemenuComponent } from './sidemenu.component';
+import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
+import { TextButtonComponent } from 'src/app/modules/buttons/components/text-button/text-button.component';
 
 const links: LinkI[] = [
   { path: '/features', label: 'Features' },
@@ -17,7 +19,7 @@ describe('Test Sidemenu', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SidemenuComponent],
-      imports: [RouterModule],
+      imports: [RouterModule, ButtonsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidemenuComponent);

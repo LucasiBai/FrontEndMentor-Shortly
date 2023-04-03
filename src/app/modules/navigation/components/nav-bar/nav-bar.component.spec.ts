@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 
 import { NavBarComponent } from './nav-bar.component';
+import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -11,7 +12,7 @@ describe('NavBarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavBarComponent, SidemenuComponent],
-      imports: [RouterModule],
+      imports: [RouterModule, ButtonsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavBarComponent);
