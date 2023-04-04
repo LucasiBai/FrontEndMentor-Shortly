@@ -1,0 +1,26 @@
+section article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+section article p {
+  text-align: center;
+  color: gray;
+  font-size: 17px;
+}
+
+section article h2 {
+  font-size: 41px;
+  text-align: center;
+  line-height: 44px;
+  color: hsl(0deg 0% 20.47%);
+}
+
+section article img {
+  width: 100vw;
+  height: 335px;
+  object-fit: cover;
+  object-position: 27px;
+}
