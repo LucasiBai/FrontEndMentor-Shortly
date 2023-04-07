@@ -7,7 +7,7 @@
 <span [ngClass]="{ active: show }">
   <ul>
     <li *ngFor="let link of links">
-      <a>{{ link.label }}</a>
+      <a [routerLink]="link.path">{{ link.label }}</a>
     </li>
     <hr />
     <li>Login</li>
