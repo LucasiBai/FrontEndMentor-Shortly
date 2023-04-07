@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { LinkI } from '../../models/link-i';
 
 import { SidemenuComponent } from './sidemenu.component';
@@ -19,7 +19,7 @@ describe('Test Sidemenu', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SidemenuComponent],
-      imports: [RouterModule, ButtonsModule],
+      imports: [RouterTestingModule, ButtonsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidemenuComponent);

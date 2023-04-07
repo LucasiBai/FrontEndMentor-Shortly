@@ -6,7 +6,7 @@
 
 <span [ngClass]="{ active: show }">
   <ul>
-    <li *ngFor="let link of links">
+    <li *ngFor="let link of links" (click)="showNav()">
       <a [routerLink]="link.path">{{ link.label }}</a>
     </li>
     <hr />
