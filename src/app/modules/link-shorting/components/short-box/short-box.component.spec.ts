@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShortBoxComponent } from './short-box.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
 
 describe('ShortBoxComponent', () => {
   let component: ShortBoxComponent;
@@ -10,7 +11,7 @@ describe('ShortBoxComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ShortBoxComponent],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, ButtonsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShortBoxComponent);

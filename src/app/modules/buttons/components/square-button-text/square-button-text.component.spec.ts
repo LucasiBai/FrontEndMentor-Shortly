@@ -14,7 +14,7 @@ describe('SquareButtonTextComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SquareButtonTextComponent],
+      declarations: [SquareButtonTextComponent, TestTextButtonComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SquareButtonTextComponent);
@@ -30,6 +30,20 @@ describe('SquareButtonTextComponent', () => {
     const button = fixture.debugElement.nativeElement.querySelector('button');
 
     expect(button).toBeTruthy();
+    expect(button.getAttribute('class')).not.toEqual('fill');
+  });
+
+  describe('Test fill button', () => {
+    beforeEach(() => {
+      component.fill = true;
+      fixture.detectChanges();
+    });
+
+    it("Should has button with 'fill' class", () => {
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+
+      expect(button.getAttribute('class')).toEqual('fill');
+    });
   });
 
   describe('Test ngContent', () => {

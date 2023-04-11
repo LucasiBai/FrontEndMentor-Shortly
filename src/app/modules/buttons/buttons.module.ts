@@ -6,6 +6,6 @@ import { SquareButtonTextComponent } from './components/square-button-text/squar
 @NgModule({
   declarations: [TextButtonComponent, SquareButtonTextComponent],
   imports: [CommonModule],
-  exports: [TextButtonComponent],
+  exports: [TextButtonComponent, SquareButtonTextComponent],
 })
 export class ButtonsModule {}
