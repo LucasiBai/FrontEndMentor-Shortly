@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShortBoxComponent } from './short-box.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
 
 describe('ShortBoxComponent', () => {
@@ -34,8 +34,44 @@ describe('ShortBoxComponent', () => {
 
   describe('Test Form Control', () => {
     it('Should contain validations', () => {
-      const form = component.initForm();
-      // TODO: Complete test
+      const formGroup: FormGroup = component.initForm();
+
+      expect(formGroup).toBeTruthy();
+      expect(formGroup.controls['url']).toBeTruthy();
+    });
+
+    it('Should only accept links', () => {
+      component.urlForm.setValue({
+        url: 'Test invalid data',
+      });
+
+      expect(component.urlForm.valid).toBeFalse();
+    });
+
+    it('Should accept correct link', () => {
+      component.urlForm.setValue({
+        url: 'https://github.com/LucasiBai',
+      });
+
+      expect(component.urlForm.valid).toBeTrue();
+    });
+
+    it('Should validate if input is empty', () => {
+      component.urlForm.setValue({
+        url: '',
+      });
+
+      expect(component.urlForm.valid).toBeFalse();
+    });
+  });
+
+  describe('Test shortLink()', () => {
+    it('Should short link', () => {
+      component.urlForm.setValue({
+        url: 'https://github.com/LucasiBai',
+      });
+
+      component.shortLink();
     });
   });
 });

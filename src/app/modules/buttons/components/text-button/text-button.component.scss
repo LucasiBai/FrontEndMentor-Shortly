@@ -11,8 +11,9 @@ button {
 
 // TODO : Update large styles
 button.large {
-  max-width: 200px;
+  display: block;
   width: 100%;
+  box-sizing: border-box;
 }
 
 button.fat {

@@ -1,4 +1,10 @@
-<form>
-  <input type="text" placeholder="Shorten a link here..." />
-  <app-square-button-text [fill]="true">Shorten It!</app-square-button-text>
+<form [formGroup]="urlForm">
+  <input
+    type="text"
+    placeholder="Shorten a link here..."
+    formControlName="url"
+  />
+  <div>
+    <app-square-button-text [fill]="true">Shorten It!</app-square-button-text>
+  </div>
 </form>
