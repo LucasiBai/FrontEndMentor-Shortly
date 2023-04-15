@@ -31,5 +31,6 @@ export class ShortBoxComponent implements OnInit {
 
   shortLink(): void {
     console.log(this.urlForm.value['url']);
+    // TODO: Complete function
   }
 }
