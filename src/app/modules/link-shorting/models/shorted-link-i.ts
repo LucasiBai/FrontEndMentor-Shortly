@@ -1,5 +1,5 @@
 export interface ShortedLinkI {
-  id: number;
+  id?: number;
   shortLink: string;
   originalLink: string;
 }
