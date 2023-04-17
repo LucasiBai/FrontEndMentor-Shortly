@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 
 import { Config } from '../config';
 import { DataI } from '../models/data-i';
@@ -35,9 +35,21 @@ export class ShortLinkService {
     return this.shortLink$.asObservable();
   }
 
-  public shortLink(link: string): Observable<ShortedLinkI[]> {
-    // this._http.get<DataI>(`${this.apiURL}/shorten?url=${link}`)
-
-    return this.shortedLinks;
+  public shortLink(link: string): Observable<ShortedLinkI> {
+    return this._http
+      .get<DataI>(`${this.apiURL}/shorten?url=${link}`)
+      .pipe(
+        map(
+          (response: DataI): ShortedLinkI => ({
+            originalLink: response.result.original_link,
+            shortLink: response.result.short_link,
+          })
+        )
+      )
+      .pipe(
+        tap((response: ShortedLinkI) => {
+          this.addShortedLink = response;
+        })
+      );
   }
 }

@@ -71,14 +71,22 @@ describe('ShortLinkService', () => {
 
   describe('Test shortLink()', () => {
     it('Should return shorted link data list', () => {
+      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
+        expect(links.length).toBeFalsy()
+      );
+
       const link = 'www.testlink.com.ar/test/short/link';
 
-      // service
-      //   .shortLink(link)
-      //   .pipe(first())
-      //   .subscribe((data: ShortedLinkI[]) => {
-      //     expect(data[0].short_link.length).toBeLessThan(link.length);
-      //   });
+      service
+        .shortLink(link)
+        .pipe(first())
+        .subscribe((data: ShortedLinkI) => {
+          expect(data.shortLink.length).toBeLessThan(link.length);
+        });
+
+      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
+        expect(links.length).toBeTruthy()
+      );
     });
   });
 });
