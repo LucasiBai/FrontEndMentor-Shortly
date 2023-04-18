@@ -2,14 +2,23 @@ import { TestBed } from '@angular/core/testing';
 
 import { ShortLinkService } from './short-link.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DataI } from '../models/data-i';
 import { first } from 'rxjs';
 import { ShortedLinkI } from '../models/shorted-link-i';
+
+const defaultLinks: ShortedLinkI[] = [
+  {
+    id: 0,
+    originalLink: 'https://github.com/LucasiBai',
+    shortLink: 'shrtco.de/TSLWEc',
+  },
+];
 
 describe('ShortLinkService', () => {
   let service: ShortLinkService;
 
   beforeEach(() => {
+    localStorage.removeItem('links');
+
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
     });
@@ -21,6 +30,10 @@ describe('ShortLinkService', () => {
   });
 
   describe('Test shortedLinks Observer', () => {
+    beforeEach(() => {
+      localStorage.clear();
+    });
+
     it('Should start empty', () => {
       service.shortedLinks
         .pipe(first())
@@ -67,6 +80,40 @@ describe('ShortLinkService', () => {
           expect(linkList[2].id).toEqual(3);
         });
     });
+
+    describe('Test localStorage store', () => {
+      beforeEach(() => {
+        localStorage.setItem('links', JSON.stringify(defaultLinks));
+      });
+
+      it('Should start with localStorage data', () => {
+        const localData: ShortedLinkI[] = JSON.parse(
+          localStorage.getItem('links') || '[]'
+        );
+
+        service.shortedLinks
+          .pipe(first())
+          .subscribe((links: ShortedLinkI[]) =>
+            expect(links[0]).toEqual(localData[0])
+          );
+      });
+
+      it('Should update localStorage in link creation', () => {
+        const shortData: ShortedLinkI = {
+          originalLink: 'www.testlink.com.ar/test/short/link',
+          shortLink: 'short.ly',
+        };
+
+        service.addShortedLink = shortData;
+
+        const localData: ShortedLinkI[] = JSON.parse(
+          localStorage.getItem('links') || '[]'
+        );
+
+        expect(localData[0].originalLink).toEqual(shortData.originalLink);
+        expect(localData[0].shortLink).toEqual(shortData.shortLink);
+      });
+    });
   });
 
   describe('Test shortLink()', () => {
@@ -82,11 +129,11 @@ describe('ShortLinkService', () => {
         .pipe(first())
         .subscribe((data: ShortedLinkI) => {
           expect(data.shortLink.length).toBeLessThan(link.length);
-        });
 
-      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
-        expect(links.length).toBeTruthy()
-      );
+          service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
+            expect(links.length).toBeTruthy()
+          );
+        });
     });
   });
 });

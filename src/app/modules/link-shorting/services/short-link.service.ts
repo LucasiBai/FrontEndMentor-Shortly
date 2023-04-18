@@ -6,6 +6,10 @@ import { Config } from '../config';
 import { DataI } from '../models/data-i';
 import { ShortedLinkI } from '../models/shorted-link-i';
 
+const initData: ShortedLinkI[] = JSON.parse(
+  localStorage.getItem('links') || '[]'
+);
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,10 +17,11 @@ export class ShortLinkService {
   constructor(private _http: HttpClient) {}
 
   private apiURL: string = Config.apiURL;
+  private localTagName: string = Config.tagName;
 
   private shortLink$: BehaviorSubject<ShortedLinkI[]> = new BehaviorSubject<
     ShortedLinkI[]
-  >([]);
+  >(initData);
 
   public set addShortedLink(shortLink: ShortedLinkI) {
     const currentLinks: ShortedLinkI[] = [...this.shortLink$.value];
@@ -28,6 +33,7 @@ export class ShortLinkService {
       { id: newId, ...shortLink },
     ];
 
+    localStorage.setItem(this.localTagName, JSON.stringify(updatedData));
     this.shortLink$.next(updatedData);
   }
 
