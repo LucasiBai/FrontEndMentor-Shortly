@@ -17,12 +17,14 @@ describe('ShortLinkService', () => {
   let service: ShortLinkService;
 
   beforeEach(() => {
-    localStorage.removeItem('links');
-
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
     });
     service = TestBed.inject(ShortLinkService);
+  });
+
+  afterEach(() => {
+    localStorage.clear();
   });
 
   it('Should be created', () => {
@@ -117,6 +119,8 @@ describe('ShortLinkService', () => {
   });
 
   describe('Test shortLink()', () => {
+    beforeEach(() => localStorage.clear());
+
     it('Should return shorted link data list', () => {
       service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
         expect(links.length).toBeFalsy()
@@ -130,9 +134,9 @@ describe('ShortLinkService', () => {
         .subscribe((data: ShortedLinkI) => {
           expect(data.shortLink.length).toBeLessThan(link.length);
 
-          service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
-            expect(links.length).toBeTruthy()
-          );
+          service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
+            expect(links.length).toBeTruthy();
+          });
         });
     });
   });
