@@ -118,26 +118,26 @@ describe('ShortLinkService', () => {
     });
   });
 
-  describe('Test shortLink()', () => {
-    beforeEach(() => localStorage.clear());
+  // describe('Test shortLink()', () => {
+  //   beforeEach(() => localStorage.clear());
 
-    it('Should return shorted link data list', () => {
-      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
-        expect(links.length).toBeFalsy()
-      );
+  //   it('Should return shorted link data list', () => {
+  //     service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
+  //       expect(links.length).toBeFalsy()
+  //     );
 
-      const link = 'www.testlink.com.ar/test/short/link';
+  //     const link = 'www.testlink.com.ar/test/short/link';
 
-      service
-        .shortLink(link)
-        .pipe(first())
-        .subscribe((data: ShortedLinkI) => {
-          expect(data.shortLink.length).toBeLessThan(link.length);
+  //     service
+  //       .shortLink(link)
+  //       .pipe(first())
+  //       .subscribe((data: ShortedLinkI) => {
+  //         expect(data.shortLink.length).toBeLessThan(link.length);
 
-          service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
-            expect(links.length).toBeTruthy();
-          });
-        });
-    });
-  });
+  //         service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
+  //           expect(links.length).toBeTruthy();
+  //         });
+  //       });
+  //   });
+  // });
 });

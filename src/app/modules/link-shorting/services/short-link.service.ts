@@ -7,7 +7,7 @@ import { DataI } from '../models/data-i';
 import { ShortedLinkI } from '../models/shorted-link-i';
 
 const initData: ShortedLinkI[] = JSON.parse(
-  localStorage.getItem('links') || '[]'
+  localStorage.getItem(Config.tagName) || '[]'
 );
 
 @Injectable({

@@ -5,6 +5,15 @@
     formControlName="url"
   />
   <div>
-    <app-square-button-text [fill]="true">Shorten It!</app-square-button-text>
+    <app-square-button-text (click)="shortLink()" [fill]="true"
+      >Shorten It!</app-square-button-text
+    >
   </div>
 </form>
+
+<ul *ngIf="lastestLinks.length > 0">
+  <li *ngFor="let link of lastestLinks">
+    {{ link.originalLink }}
+    {{ link.shortLink }}
+  </li>
+</ul>

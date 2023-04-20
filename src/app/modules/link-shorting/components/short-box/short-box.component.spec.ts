@@ -1,8 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 import { ShortBoxComponent } from './short-box.component';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
+import { ShortLinkService } from '../../services/short-link.service';
+import { ShortedLinkI } from '../../models/shorted-link-i';
+
+const defaultLinks: ShortedLinkI[] = [
+  {
+    id: 0,
+    originalLink: 'https://github.com/LucasiBai',
+    shortLink: 'shrtco.de/TSLWEc',
+  },
+];
 
 describe('ShortBoxComponent', () => {
   let component: ShortBoxComponent;
@@ -11,7 +25,7 @@ describe('ShortBoxComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ShortBoxComponent],
-      imports: [ReactiveFormsModule, ButtonsModule],
+      imports: [ReactiveFormsModule, ButtonsModule, HttpClientTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShortBoxComponent);
@@ -66,14 +80,39 @@ describe('ShortBoxComponent', () => {
   });
 
   describe('Test shortLink()', () => {
+    let service: ShortLinkService;
+
+    beforeEach(() => {
+      localStorage.clear();
+      service = TestBed.inject(ShortLinkService);
+    });
+
+    afterAll(() => {
+      localStorage.clear();
+    });
+
     it('Should short link', () => {
       component.urlForm.setValue({
         url: 'https://github.com/LucasiBai',
       });
 
       component.shortLink();
-      
-      // TODO: Complete Test
+
+      service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
+        expect(links[0].originalLink).toEqual('https://github.com/LucasiBai');
+        expect(component.lastestLinks).toEqual(links);
+      });
+
+      expect(component.urlForm.value['url']).toBeFalsy();
+    });
+
+    it('Should lastestLinks starts with shortedLinks data', () => {
+      localStorage.setItem('links', JSON.stringify(defaultLinks));
+      fixture.detectChanges();
+
+      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
+        expect(component.lastestLinks).toEqual(defaultLinks)
+      );
     });
   });
 });
