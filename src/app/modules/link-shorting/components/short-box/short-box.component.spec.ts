@@ -46,6 +46,26 @@ describe('ShortBoxComponent', () => {
     expect(sendButton).toBeTruthy();
   });
 
+  describe('Test localData render', () => {
+    let service: ShortLinkService;
+
+    beforeEach(() => {
+      localStorage.clear();
+      service = TestBed.inject(ShortLinkService);
+    });
+
+    afterAll(() => {
+      localStorage.clear();
+    });
+
+    it('Should render link-card', () => {
+      const linkList =
+        fixture.debugElement.nativeElement.querySelectorAll('app-link-card');
+
+      expect(linkList).toBeTruthy();
+    });
+  });
+
   describe('Test Form Control', () => {
     it('Should contain validations', () => {
       const formGroup: FormGroup = component.initForm();
