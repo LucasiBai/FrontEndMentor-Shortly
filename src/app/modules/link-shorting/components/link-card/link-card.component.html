@@ -1,8 +1,10 @@
 <article>
   <ul>
-    <li>Original</li>
+    <li>{{ linkData.originalLink }}</li>
     <hr />
-    <li>Corto</li>
+    <li>{{ linkData.shortLink }}</li>
   </ul>
-  <app-square-button-text [fill]="true">Copy</app-square-button-text>
+  <app-square-button-text (click)="copyLink()" [fill]="true">{{
+    !copied ? "Copy" : "Copied!"
+  }}</app-square-button-text>
 </article>

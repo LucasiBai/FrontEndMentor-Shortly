@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ShortedLinkI } from '../../models/shorted-link-i';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-link-card',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./link-card.component.scss'],
 })
 export class LinkCardComponent {
-  copyLink(): void {}
+  constructor(private _clipboard: Clipboard) {}
+
+  @Input() linkData!: ShortedLinkI;
+
+  copied: boolean = false;
+
+  copyLink(): void {
+    this.copied = true;
+    this._clipboard.copy(this.linkData.shortLink);
+  }
 }
