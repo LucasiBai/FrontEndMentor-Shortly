@@ -33,6 +33,19 @@ describe('SquareButtonTextComponent', () => {
     expect(button.getAttribute('class')).not.toEqual('fill');
   });
 
+  describe('Test clicked button', () => {
+    beforeEach(() => {
+      component.clicked = true;
+      fixture.detectChanges();
+    });
+
+    it("Should has button with 'clicked' class", () => {
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+
+      expect(button.getAttribute('class')).toEqual('clicked');
+    });
+  });
+
   describe('Test fill button', () => {
     beforeEach(() => {
       component.fill = true;

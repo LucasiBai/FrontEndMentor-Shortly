@@ -7,8 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SquareButtonTextComponent implements OnInit {
   @Input() fill!: boolean;
+  @Input() clicked!: boolean;
 
   ngOnInit(): void {
     this.fill = this.fill ? this.fill : false;
+    this.clicked = this.clicked ? this.clicked : false;
   }
 }

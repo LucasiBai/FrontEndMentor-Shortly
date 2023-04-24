@@ -6,9 +6,14 @@ button {
   border: none;
   color: white;
   background-color: hsl(180, 66%, 49%);
+  transition: background ease-in 0.2s;
 }
 
 button.fill {
   position: absolute;
   width: 100%;
+}
+
+button.clicked {
+  background-color: hsl(257, 27%, 26%);
 }

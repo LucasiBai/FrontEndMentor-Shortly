@@ -17,5 +17,9 @@ export class LinkCardComponent {
   copyLink(): void {
     this.copied = true;
     this._clipboard.copy(this.linkData.shortLink);
+
+    setTimeout(() => {
+      this.copied = false;
+    }, 3000);
   }
 }

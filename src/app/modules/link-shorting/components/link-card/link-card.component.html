@@ -4,7 +4,12 @@
     <hr />
     <li>{{ linkData.shortLink }}</li>
   </ul>
-  <app-square-button-text (click)="copyLink()" [fill]="true">{{
-    !copied ? "Copy" : "Copied!"
-  }}</app-square-button-text>
+  <div>
+    <app-square-button-text
+      (click)="copyLink()"
+      [clicked]="copied"
+      [fill]="true"
+      >{{ !copied ? "Copy" : "Copied!" }}</app-square-button-text
+    >
+  </div>
 </article>

@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 import { LinkCardComponent } from './link-card.component';
@@ -54,7 +59,7 @@ fdescribe('LinkCardComponent', () => {
       clipboard = new Clipboard(document);
     });
 
-    it("Should update button innerText to 'Copied!'", () => {
+    it("Should update button innerText to 'Copied!' for 3 seconds", fakeAsync(() => {
       component.copyLink();
 
       fixture.detectChanges();
@@ -64,7 +69,14 @@ fdescribe('LinkCardComponent', () => {
 
       expect(copyButton).toBeTruthy();
       expect(copyButton.innerText).toEqual('Copied!');
-    });
+      expect(copyButton.getAttribute('class')).toEqual('fill clicked');
+
+      tick(3000);
+
+      fixture.detectChanges();
+      expect(copyButton.innerText).toEqual('Copy');
+      expect(copyButton.getAttribute('class')).toEqual('fill');
+    }));
 
     it('Should update navigator clipboard', () => {
       spyOn(clipboard, 'copy');
