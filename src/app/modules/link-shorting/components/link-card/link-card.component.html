@@ -2,7 +2,11 @@
   <ul>
     <li>{{ linkData.originalLink }}</li>
     <hr />
-    <li>{{ linkData.shortLink }}</li>
+    <li>
+      <a href="https://{{ linkData.shortLink }}" target="_blank">{{
+        linkData.shortLink
+      }}</a>
+    </li>
   </ul>
   <div>
     <app-square-button-text

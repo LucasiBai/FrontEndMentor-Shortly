@@ -49,7 +49,16 @@ fdescribe('LinkCardComponent', () => {
     const links = fixture.debugElement.nativeElement.querySelectorAll('li');
 
     expect(links[0].innerText).toEqual(baseLink.originalLink);
-    expect(links[1].innerText).toEqual(baseLink.shortLink);
+    expect(links[1].children[0].innerText).toEqual(baseLink.shortLink);
+  });
+
+  it("Should short link be a 'a' element that redirects to link", () => {
+    const links = fixture.debugElement.nativeElement.querySelectorAll('li');
+
+    expect(links[1].children[0].getAttribute('href')).toEqual(
+      `https://${baseLink.shortLink}`
+    );
+    expect(links[1].children[0].getAttribute('target')).toEqual('_blank');
   });
 
   describe('Test copyLink()', () => {
