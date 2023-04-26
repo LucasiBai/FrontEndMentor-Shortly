@@ -80,7 +80,7 @@ fdescribe('LinkCardComponent', () => {
       expect(copyButton.innerText).toEqual('Copied!');
       expect(copyButton.getAttribute('class')).toEqual('fill clicked');
 
-      tick(3000);
+      tick(1700);
 
       fixture.detectChanges();
       expect(copyButton.innerText).toEqual('Copy');

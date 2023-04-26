@@ -1,7 +1,17 @@
 section {
   display: flex;
   flex-direction: column;
-  gap: 5.5rem;
+  gap: 10.5rem;
+
+  section {
+    background-color: hsl(259deg 28.56% 95.59%);
+
+    article {
+      app-short-box {
+        transform: translate(0px, -79px);
+      }
+    }
+  }
 
   article {
     display: flex;

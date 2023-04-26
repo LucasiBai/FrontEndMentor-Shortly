@@ -1,9 +1,10 @@
 article {
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
-  width: 100%;
-  margin: 1rem 0;
+  width: 90%;
+  margin: 0 auto;
   box-sizing: border-box;
+  max-width: 328.2px;
 
   display: flex;
   flex-direction: column;
@@ -28,6 +29,10 @@ article {
       padding: 0.8rem 0;
       color: black;
       width: 91%;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       a {
         color: hsl(180, 66%, 49%);

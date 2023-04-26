@@ -20,6 +20,6 @@ export class LinkCardComponent {
 
     setTimeout(() => {
       this.copied = false;
-    }, 3000);
+    }, 1700);
   }
 }
