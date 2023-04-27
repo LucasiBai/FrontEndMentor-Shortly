@@ -6,9 +6,19 @@ section {
   section {
     background-color: hsl(259deg 28.56% 95.59%);
 
+    gap: 1rem;
+
     article {
       app-short-box {
         transform: translate(0px, -79px);
+      }
+
+      gap: 1rem;
+
+      p {
+        max-width: 290px;
+        font-size: 16px;
+        color: #919191;
       }
     }
   }
@@ -35,6 +45,14 @@ section {
 
     h2 {
       font-size: 41px;
+      text-align: center;
+      line-height: 44px;
+      color: hsl(0deg 0% 20.47%);
+      max-width: 375px;
+    }
+
+    h3 {
+      font-size: 27px;
       text-align: center;
       line-height: 44px;
       color: hsl(0deg 0% 20.47%);

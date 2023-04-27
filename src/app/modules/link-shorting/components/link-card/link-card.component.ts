@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ShortedLinkI } from '../../models/shorted-link-i';
 import { Clipboard } from '@angular/cdk/clipboard';
 
+import { assert } from 'ts-essentials';
+
 @Component({
   selector: 'app-link-card',
   templateUrl: './link-card.component.html',
@@ -15,6 +17,8 @@ export class LinkCardComponent {
   copied: boolean = false;
 
   copyLink(): void {
+    assert(!this.copied);
+
     this.copied = true;
     this._clipboard.copy(this.linkData.shortLink);
 

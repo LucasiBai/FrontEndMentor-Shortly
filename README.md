@@ -50,6 +50,7 @@ Your users should be able to:
 - [SCSS](https://sass-lang.com/)
 - Mobile-first workflow
 - [Angular](https://angular.io/) - JS library
+- DBC
 
 ## Author
 
