@@ -16,7 +16,7 @@ const baseLink: ShortedLinkI = {
   shortLink: 'short.ly',
 };
 
-fdescribe('LinkCardComponent', () => {
+describe('LinkCardComponent', () => {
   let component: LinkCardComponent;
   let fixture: ComponentFixture<LinkCardComponent>;
 
