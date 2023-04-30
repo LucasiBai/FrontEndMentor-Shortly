@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconCardListComponent } from './icon-card-list.component';
 import { IconCardDataI } from '../../models/icon-card-data-i';
+import { IconCardComponent } from '../icon-card/icon-card.component';
 
 const mockCardListData: IconCardDataI[] = [
   {
@@ -22,7 +23,7 @@ describe('IconCardListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IconCardListComponent],
+      declarations: [IconCardListComponent, IconCardComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(IconCardListComponent);
@@ -32,11 +33,13 @@ describe('IconCardListComponent', () => {
 
   it('Should render correctly with empty card data', () => {
     expect(component).toBeTruthy();
+
+    expect(component.cardListData).toEqual([]);
   });
 
   describe('Test IconCardList with card data', () => {
     beforeEach(() => {
-      component.cardList = mockCardListData;
+      component.cardListData = mockCardListData;
 
       fixture.detectChanges();
     });
@@ -47,10 +50,10 @@ describe('IconCardListComponent', () => {
 
       expect(cards.length).toEqual(mockCardListData.length);
 
-      expect(cards[0].children[1].innerText).toEqual(
+      expect(cards[0].children[0].children[1].innerText).toEqual(
         mockCardListData[0].header
       );
-      expect(cards[1].children[1].innerText).toEqual(
+      expect(cards[0].children[0].children[1].innerText).toEqual(
         mockCardListData[1].header
       );
     });

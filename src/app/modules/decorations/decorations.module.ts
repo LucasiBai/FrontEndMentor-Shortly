@@ -6,6 +6,6 @@ import { IconCardListComponent } from './components/icon-card-list/icon-card-lis
 @NgModule({
   declarations: [IconCardComponent, IconCardListComponent],
   imports: [CommonModule],
-  exports: [IconCardComponent],
+  exports: [IconCardComponent, IconCardListComponent],
 })
 export class DecorationsModule {}

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IconCardDataI } from '../../models/icon-card-data-i';
 
 @Component({
@@ -6,6 +6,10 @@ import { IconCardDataI } from '../../models/icon-card-data-i';
   templateUrl: './icon-card-list.component.html',
   styleUrls: ['./icon-card-list.component.scss'],
 })
-export class IconCardListComponent {
-  @Input() cardList!: IconCardDataI[];
+export class IconCardListComponent implements OnInit {
+  @Input() cardListData!: IconCardDataI[];
+
+  ngOnInit(): void {
+    this.cardListData = this.cardListData ? this.cardListData : [];
+  }
 }

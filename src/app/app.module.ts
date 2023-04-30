@@ -7,6 +7,7 @@ import { NavigationModule } from './modules/navigation/navigation.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ButtonsModule } from './modules/buttons/buttons.module';
 import { LinkShortingModule } from './modules/link-shorting/link-shorting.module';
+import { DecorationsModule } from './modules/decorations/decorations.module';
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
@@ -16,6 +17,7 @@ import { LinkShortingModule } from './modules/link-shorting/link-shorting.module
     NavigationModule,
     ButtonsModule,
     LinkShortingModule,
+    DecorationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

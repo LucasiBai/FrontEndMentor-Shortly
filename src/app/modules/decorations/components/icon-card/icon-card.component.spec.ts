@@ -9,7 +9,7 @@ const mockData: IconCardDataI = {
   icon: '../../../../assets/images/icon-detailed-records.svg',
 };
 
-fdescribe('IconCardComponent', () => {
+describe('IconCardComponent', () => {
   let component: IconCardComponent;
   let fixture: ComponentFixture<IconCardComponent>;
 

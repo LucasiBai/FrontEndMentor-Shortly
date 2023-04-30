@@ -1,1 +1,6 @@
-<p>icon-card-list works!</p>
+<section>
+  <app-icon-card
+    *ngFor="let card of cardListData"
+    [data]="card"
+  ></app-icon-card>
+</section>

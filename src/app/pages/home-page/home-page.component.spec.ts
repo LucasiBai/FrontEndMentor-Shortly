@@ -21,5 +21,6 @@ describe('HomePageComponent', () => {
 
   it('Should render correctly', () => {
     expect(component).toBeTruthy();
+    expect(component.contentArticles).toBeTruthy();
   });
 });
