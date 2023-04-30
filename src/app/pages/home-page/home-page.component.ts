@@ -15,6 +15,13 @@ const cardData: IconCardDataI[] = [
     content:
       'Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.',
   },
+
+  {
+    icon: '../../../../assets/images/icon-fully-customizable.svg',
+    header: 'Fully Customizable',
+    content:
+      'Improve brand awareness and content discoverability through customizable links, supercharging audience engagement. ',
+  },
 ];
 @Component({
   selector: 'app-home-page',
