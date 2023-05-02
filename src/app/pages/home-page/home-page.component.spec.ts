@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePageComponent } from './home-page.component';
 import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
 import { LinkShortingModule } from 'src/app/modules/link-shorting/link-shorting.module';
+import { DecorationsModule } from 'src/app/modules/decorations/decorations.module';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -10,7 +11,7 @@ describe('HomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonsModule, LinkShortingModule],
+      imports: [ButtonsModule, LinkShortingModule, DecorationsModule],
       declarations: [HomePageComponent],
     }).compileComponents();
 
