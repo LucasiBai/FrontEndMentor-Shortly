@@ -1,1 +1,21 @@
-<p>footer works!</p>
+<footer>
+  <ul>
+    <li class="root-link" *ngFor="let link of links">
+      <a routerLink="{{ link.root.path }}">
+        {{ link.root.label }}
+      </a>
+      <ul>
+        <li *ngFor="let sublink of link.children">
+          <a routerLink="{{ sublink.path }}">{{ sublink.label }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul>
+    <li class="media-link" *ngFor="let media of socialMedia">
+      <a href="{{ media.href }}">
+        <img src="{{ media.icon }}" alt="{{ media.media }}" />
+      </a>
+    </li>
+  </ul>
+</footer>
