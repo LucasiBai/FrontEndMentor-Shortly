@@ -1,5 +1,6 @@
 <footer>
-  <ul>
+  <img src="./assets/images/logo-invert.svg" alt="shortly-logo" />
+  <ul class="links">
     <li class="root-link" *ngFor="let link of links">
       <a routerLink="{{ link.root.path }}">
         {{ link.root.label }}
@@ -11,9 +12,9 @@
       </ul>
     </li>
   </ul>
-  <ul>
+  <ul class="social-media">
     <li class="media-link" *ngFor="let media of socialMedia">
-      <a href="{{ media.href }}">
+      <a href="{{ media.href }}" target="_blank">
         <img src="{{ media.icon }}" alt="{{ media.media }}" />
       </a>
     </li>

@@ -1,0 +1,18 @@
+footer {
+  background-color: hsl(255, 11%, 22%);
+
+  .root-link {
+    a {
+      color: rgb(255, 255, 255);
+    }
+    ul {
+      a {
+        color: #979797;
+      }
+    }
+  }
+
+  .social-media {
+    display: flex;
+  }
+}

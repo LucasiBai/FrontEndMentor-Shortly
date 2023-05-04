@@ -88,6 +88,9 @@ fdescribe('FooterComponent', () => {
       expect(mediaLinks[0].children[0].getAttribute('href')).toEqual(
         mockSocialMedia[0].href
       );
+      expect(mediaLinks[0].children[0].getAttribute('target')).toEqual(
+        '_blank'
+      );
       expect(mediaLinks[0].children[0].children[0].getAttribute('alt')).toEqual(
         mockSocialMedia[0].media
       );
@@ -97,6 +100,9 @@ fdescribe('FooterComponent', () => {
 
       expect(mediaLinks[1].children[0].getAttribute('href')).toEqual(
         mockSocialMedia[1].href
+      );
+      expect(mediaLinks[1].children[0].getAttribute('target')).toEqual(
+        '_blank'
       );
       expect(mediaLinks[0].children[0].children[0].getAttribute('alt')).toEqual(
         mockSocialMedia[1].media
