@@ -1,7 +1,22 @@
 footer {
   background-color: hsl(255, 11%, 22%);
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 3rem 0;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .root-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     a {
       color: rgb(255, 255, 255);
     }
@@ -14,5 +29,6 @@ footer {
 
   .social-media {
     display: flex;
+    flex-direction: row;
   }
 }
