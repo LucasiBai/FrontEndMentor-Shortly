@@ -5,7 +5,7 @@ section {
 
   section {
     background-color: hsl(259deg 28.56% 95.59%);
-    padding-bottom: 5rem;
+
     gap: 1rem;
 
     article {
@@ -87,6 +87,8 @@ section {
 
     app-icon-card-list {
       margin-top: 2rem;
+
+      padding-bottom: 5rem;
     }
   }
 }
