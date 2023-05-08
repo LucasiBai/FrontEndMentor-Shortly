@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShortedLinkI } from '../../models/shorted-link-i';
 import { ShortLinkService } from '../../services/short-link.service';
+import { assert } from 'ts-essentials';
 
 @Component({
   selector: 'app-short-box',
@@ -12,6 +13,15 @@ export class ShortBoxComponent implements OnInit {
   constructor(private _fb: FormBuilder, private _short: ShortLinkService) {}
 
   urlForm!: FormGroup;
+
+  errors: {
+    [key: string]: string;
+    required: string;
+    pattern: string;
+  } = {
+    required: 'Please add a link',
+    pattern: 'Entered url is not valid',
+  };
 
   lastestLinks: ShortedLinkI[] = [];
 
@@ -38,11 +48,19 @@ export class ShortBoxComponent implements OnInit {
   }
 
   shortLink(): void {
+    assert(this.urlForm.valid);
+
     const link = this.urlForm.value['url'];
 
     this._short
       .shortLink(link)
       .subscribe((link: ShortedLinkI) => this.lastestLinks.push(link));
     this.urlForm = this.initForm();
+  }
+
+  getErrorMessage(): string {
+    const error = Object.keys(this.urlForm.get('url')?.errors || {})[0];
+
+    return this.errors[error];
   }
 }

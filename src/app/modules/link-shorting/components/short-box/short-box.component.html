@@ -3,7 +3,14 @@
     type="text"
     placeholder="Shorten a link here..."
     formControlName="url"
+    [ngClass]="{
+      'invalid-input': urlForm.get('url')?.touched && !urlForm.valid
+    }"
   />
+  <label for="url" *ngIf="urlForm.get('url')?.touched && !urlForm.valid">{{
+    getErrorMessage()
+  }}</label>
+
   <div>
     <app-square-button-text (click)="shortLink()" [fill]="true"
       >Shorten It!</app-square-button-text
@@ -11,9 +18,8 @@
   </div>
 </form>
 
-<ul *ngIf="lastestLinks.length > 0">
+<!-- <ul *ngIf="lastestLinks.length > 0">
   <li *ngFor="let link of lastestLinks">
-    {{ link.originalLink }}
-    {{ link.shortLink }}
+    <app-link-card [linkData]="link"></app-link-card>
   </li>
-</ul>
+</ul> -->

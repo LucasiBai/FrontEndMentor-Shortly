@@ -31,7 +31,7 @@ const mockSocialMedia: SocialMediaI[] = [
   },
 ];
 
-fdescribe('FooterComponent', () => {
+describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 

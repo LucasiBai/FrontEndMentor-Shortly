@@ -18,7 +18,7 @@ const defaultLinks: ShortedLinkI[] = [
   },
 ];
 
-describe('ShortBoxComponent', () => {
+fdescribe('ShortBoxComponent', () => {
   let component: ShortBoxComponent;
   let fixture: ComponentFixture<ShortBoxComponent>;
 
@@ -78,8 +78,32 @@ describe('ShortBoxComponent', () => {
       component.urlForm.setValue({
         url: 'Test invalid data',
       });
+      component.urlForm.controls['url'].markAsTouched();
+
+      fixture.detectChanges();
+      const input = fixture.debugElement.nativeElement.querySelector('input');
+      const errorLabel =
+        fixture.debugElement.nativeElement.querySelector('label');
 
       expect(component.urlForm.valid).toBeFalse();
+      expect(input.getAttribute('class')).toContain('invalid-input');
+      expect(errorLabel.innerText).toEqual('Entered url is not valid');
+    });
+
+    it('Should validate if input is empty', () => {
+      component.urlForm.setValue({
+        url: '',
+      });
+      component.urlForm.controls['url'].markAsTouched();
+
+      fixture.detectChanges();
+      const input = fixture.debugElement.nativeElement.querySelector('input');
+      const errorLabel =
+        fixture.debugElement.nativeElement.querySelector('label');
+
+      expect(component.urlForm.valid).toBeFalse();
+      expect(input.getAttribute('class')).toContain('invalid-input');
+      expect(errorLabel.innerText).toEqual('Please add a link');
     });
 
     it('Should accept correct link', () => {
@@ -88,14 +112,6 @@ describe('ShortBoxComponent', () => {
       });
 
       expect(component.urlForm.valid).toBeTrue();
-    });
-
-    it('Should validate if input is empty', () => {
-      component.urlForm.setValue({
-        url: '',
-      });
-
-      expect(component.urlForm.valid).toBeFalse();
     });
   });
 

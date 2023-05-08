@@ -7,7 +7,17 @@ form {
   background-color: hsl(257, 27%, 26%);
   gap: 1rem;
   width: 78%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+
+  .invalid-input {
+    border: 3px rgb(243, 94, 94) solid;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: rgb(243, 94, 94);
+      opacity: 0.6;
+    }
+  }
 
   // Background
   background-image: url("../../../../../assets/images/bg-shorten-mobile.svg");
@@ -29,5 +39,23 @@ form {
     font-size: 15px;
     border-radius: 5px;
     border: none;
+    outline: none;
+  }
+  label {
+    width: 100%;
+    color: rgb(243, 94, 94);
+    font-style: italic;
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  li {
+    width: 100%;
+    margin: 0 auto;
   }
 }

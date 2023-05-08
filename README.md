@@ -40,7 +40,7 @@ Your users should be able to:
 
 ### Links
 
-- Solution URL: https://fem-shortly-lucasibai.netlify.app/home
+- Solution URL: https://fem-shortly-lucasibai.netlify.app
 
 ## My process
 
