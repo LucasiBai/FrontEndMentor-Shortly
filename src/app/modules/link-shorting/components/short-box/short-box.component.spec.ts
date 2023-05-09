@@ -18,7 +18,7 @@ const defaultLinks: ShortedLinkI[] = [
   },
 ];
 
-fdescribe('ShortBoxComponent', () => {
+describe('ShortBoxComponent', () => {
   let component: ShortBoxComponent;
   let fixture: ComponentFixture<ShortBoxComponent>;
 
@@ -78,26 +78,34 @@ fdescribe('ShortBoxComponent', () => {
       component.urlForm.setValue({
         url: 'Test invalid data',
       });
-      component.urlForm.controls['url'].markAsTouched();
-
       fixture.detectChanges();
+
       const input = fixture.debugElement.nativeElement.querySelector('input');
+      expect(input.getAttribute('class')).not.toContain('invalid-input');
+
+      component.urlForm.controls['url'].markAsTouched();
+      fixture.detectChanges();
+
       const errorLabel =
         fixture.debugElement.nativeElement.querySelector('label');
 
       expect(component.urlForm.valid).toBeFalse();
       expect(input.getAttribute('class')).toContain('invalid-input');
-      expect(errorLabel.innerText).toEqual('Entered url is not valid');
+      expect(errorLabel.innerText).toEqual('Please enter a valid url');
     });
 
     it('Should validate if input is empty', () => {
       component.urlForm.setValue({
         url: '',
       });
-      component.urlForm.controls['url'].markAsTouched();
-
       fixture.detectChanges();
+
       const input = fixture.debugElement.nativeElement.querySelector('input');
+      expect(input.getAttribute('class')).not.toContain('invalid-input');
+
+      component.urlForm.controls['url'].markAsTouched();
+      fixture.detectChanges();
+
       const errorLabel =
         fixture.debugElement.nativeElement.querySelector('label');
 

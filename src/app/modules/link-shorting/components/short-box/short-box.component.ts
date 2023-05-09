@@ -20,7 +20,7 @@ export class ShortBoxComponent implements OnInit {
     pattern: string;
   } = {
     required: 'Please add a link',
-    pattern: 'Entered url is not valid',
+    pattern: 'Please enter a valid url',
   };
 
   lastestLinks: ShortedLinkI[] = [];
@@ -48,6 +48,7 @@ export class ShortBoxComponent implements OnInit {
   }
 
   shortLink(): void {
+    this.urlForm.controls['url'].markAsTouched();
     assert(this.urlForm.valid);
 
     const link = this.urlForm.value['url'];

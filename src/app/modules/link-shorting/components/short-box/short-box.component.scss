@@ -32,6 +32,13 @@ form {
     height: 48px;
   }
 
+  .input {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 4px;
+  }
+
   input {
     box-sizing: border-box;
     width: 100%;
@@ -45,6 +52,7 @@ form {
     width: 100%;
     color: rgb(243, 94, 94);
     font-style: italic;
+    font-size: 12px;
   }
 }
 

@@ -1,16 +1,17 @@
 <form [formGroup]="urlForm">
-  <input
-    type="text"
-    placeholder="Shorten a link here..."
-    formControlName="url"
-    [ngClass]="{
-      'invalid-input': urlForm.get('url')?.touched && !urlForm.valid
-    }"
-  />
-  <label for="url" *ngIf="urlForm.get('url')?.touched && !urlForm.valid">{{
-    getErrorMessage()
-  }}</label>
-
+  <div class="input">
+    <input
+      type="text"
+      placeholder="Shorten a link here..."
+      formControlName="url"
+      [ngClass]="{
+        'invalid-input': urlForm.get('url')?.touched && !urlForm.valid
+      }"
+    />
+    <label for="url" *ngIf="urlForm.get('url')?.touched && !urlForm.valid">{{
+      getErrorMessage()
+    }}</label>
+  </div>
   <div>
     <app-square-button-text (click)="shortLink()" [fill]="true"
       >Shorten It!</app-square-button-text
