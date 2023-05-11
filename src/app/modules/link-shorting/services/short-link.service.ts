@@ -29,7 +29,7 @@ export class ShortLinkService {
     const newId = currentLinks.length === 0 ? 1 : currentLinks.length + 1;
 
     const updatedData: ShortedLinkI[] = [
-      ...currentLinks,
+      ...currentLinks.slice(-4),
       { id: newId, ...shortLink },
     ];
 

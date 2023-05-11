@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoaderComponent } from './loader.component';
 import { LoadingService } from '../../services/loading.service';
 
-fdescribe('LoaderComponent', () => {
+describe('LoaderComponent', () => {
   let component: LoaderComponent;
   let fixture: ComponentFixture<LoaderComponent>;
 

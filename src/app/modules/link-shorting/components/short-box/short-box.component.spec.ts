@@ -16,6 +16,11 @@ const defaultLinks: ShortedLinkI[] = [
     originalLink: 'https://github.com/LucasiBai',
     shortLink: 'shrtco.de/TSLWEc',
   },
+  {
+    id: 1,
+    originalLink: 'https://github.com/LucasiBai',
+    shortLink: 'shrtco.de/TSLWEc',
+  },
 ];
 
 describe('ShortBoxComponent', () => {
@@ -154,9 +159,7 @@ describe('ShortBoxComponent', () => {
       localStorage.setItem('links', JSON.stringify(defaultLinks));
       fixture.detectChanges();
 
-      service.shortedLinks.subscribe((links: ShortedLinkI[]) =>
-        expect(component.lastestLinks).toEqual(defaultLinks)
-      );
+      expect(component.lastestLinks).toEqual(defaultLinks);
     });
   });
 });

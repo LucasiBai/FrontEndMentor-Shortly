@@ -16,8 +16,6 @@ export class ShortBoxComponent implements OnInit {
 
   errors: {
     [key: string]: string;
-    required: string;
-    pattern: string;
   } = {
     required: 'Please add a link',
     pattern: 'Please enter a valid url',
@@ -29,7 +27,7 @@ export class ShortBoxComponent implements OnInit {
     this.urlForm = this.initForm();
 
     this._short.shortedLinks.subscribe(
-      (links: ShortedLinkI[]) => (this.lastestLinks = links)
+      (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
     );
   }
 
@@ -53,9 +51,7 @@ export class ShortBoxComponent implements OnInit {
 
     const link = this.urlForm.value['url'];
 
-    this._short
-      .shortLink(link)
-      .subscribe((link: ShortedLinkI) => this.lastestLinks.push(link));
+    this._short.shortLink(link).subscribe((link: ShortedLinkI) => {});
     this.urlForm = this.initForm();
   }
 

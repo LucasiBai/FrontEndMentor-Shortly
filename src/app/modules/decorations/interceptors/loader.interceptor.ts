@@ -9,7 +9,7 @@ import { Observable, finalize } from 'rxjs';
 import { LoadingService } from '../../decorations/services/loading.service';
 
 @Injectable()
-export class RequestInterceptor implements HttpInterceptor {
+export class LoaderInterceptor implements HttpInterceptor {
   constructor(private _loader: LoadingService) {}
 
   intercept(

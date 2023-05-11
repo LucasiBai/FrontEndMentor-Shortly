@@ -115,6 +115,28 @@ describe('ShortLinkService', () => {
         expect(localData[0].originalLink).toEqual(shortData.originalLink);
         expect(localData[0].shortLink).toEqual(shortData.shortLink);
       });
+
+      it('Should local data no be greater than 5 elements and should be the last five', () => {
+        const shortData: ShortedLinkI = {
+          originalLink: 'www.testlink.com.ar/test/short/link',
+          shortLink: 'short.ly',
+        };
+
+        service.addShortedLink = shortData;
+        service.addShortedLink = shortData;
+        service.addShortedLink = shortData;
+        service.addShortedLink = shortData;
+        service.addShortedLink = shortData;
+        service.addShortedLink = shortData;
+        service.addShortedLink = { ...shortData, shortLink: 'last.ly' };
+
+        const localData: ShortedLinkI[] = JSON.parse(
+          localStorage.getItem('links') || '[]'
+        );
+
+        expect(localData.length).toBeLessThanOrEqual(5);
+        expect(localData[4].shortLink).toEqual('last.ly');
+      });
     });
   });
 
