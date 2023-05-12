@@ -16,7 +16,7 @@ const baseLink: ShortedLinkI = {
   shortLink: 'short.ly',
 };
 
-describe('LinkCardComponent', () => {
+fdescribe('LinkCardComponent', () => {
   let component: LinkCardComponent;
   let fixture: ComponentFixture<LinkCardComponent>;
 
@@ -63,9 +63,11 @@ describe('LinkCardComponent', () => {
 
   describe('Test copyLink()', () => {
     let clipboard: Clipboard;
+    let clipboardSpy: jasmine.SpyObj<Clipboard>;
 
     beforeEach(() => {
       clipboard = new Clipboard(document);
+      clipboardSpy = TestBed.inject(Clipboard) as jasmine.SpyObj<Clipboard>;
     });
 
     it("Should update button innerText to 'Copied!' for 3 seconds", fakeAsync(() => {
@@ -89,9 +91,11 @@ describe('LinkCardComponent', () => {
 
     it('Should update navigator clipboard', () => {
       spyOn(clipboard, 'copy');
+
       component.copyLink();
 
-      expect(clipboard.copy).toHaveBeenCalledWith(baseLink.shortLink);
+      expect(component.linkData.shortLink).toEqual(baseLink.shortLink);
+      expect(clipboardSpy.copy).toHaveBeenCalledWith(baseLink.shortLink);
     });
   });
 });

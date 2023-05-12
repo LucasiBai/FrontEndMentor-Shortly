@@ -12,7 +12,6 @@ const defaultLinks: ShortedLinkI[] = [
     shortLink: 'shrtco.de/TSLWEc',
   },
 ];
-
 describe('ShortLinkService', () => {
   let service: ShortLinkService;
 
