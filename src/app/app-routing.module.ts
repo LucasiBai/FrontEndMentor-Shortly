@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'features', component: HomePageComponent },
   { path: 'pricing', component: HomePageComponent },
   { path: 'resources', component: HomePageComponent },
+  { path: '**', component: HomePageComponent },
 ];
 
 @NgModule({

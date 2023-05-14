@@ -1,8 +1,25 @@
 <header>
   <nav>
-    <a [routerLink]="'/'">
-      <img src="./assets/images/logo.svg" alt="Shortly" />
-    </a>
+    <div>
+      <a [routerLink]="'/'">
+        <img src="./assets/images/logo.svg" alt="Shortly" />
+      </a>
+      <ul class="link-list">
+        <li *ngFor="let link of links">
+          <a [routerLink]="link.path">
+            {{ link.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ul>
+      <li>
+        <a href="">Login</a>
+      </li>
+      <li>
+        <app-text-button [type]="'large'"> Sign Up </app-text-button>
+      </li>
+    </ul>
     <app-sidemenu [links]="links"></app-sidemenu>
   </nav>
 </header>
