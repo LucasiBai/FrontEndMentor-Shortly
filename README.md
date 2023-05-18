@@ -1,4 +1,4 @@
-# Frontend Mentor - Interactive comments section Solution
+# Frontend Mentor - Shortly Solution
 
 ## Welcome! 👋
 
