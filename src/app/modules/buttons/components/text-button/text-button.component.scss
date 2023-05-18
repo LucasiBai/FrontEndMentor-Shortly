@@ -7,6 +7,10 @@ button {
   color: white;
   border-radius: 200px;
   padding: 0.6rem 1rem;
+  position: relative;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 // TODO : Update large styles
