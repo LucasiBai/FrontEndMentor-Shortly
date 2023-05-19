@@ -13,6 +13,9 @@ form {
     flex-direction: row;
     width: 100%;
     max-width: 1100px;
+    box-sizing: border-box;
+    padding: 3.5rem 4.3rem;
+    gap: 1.5rem;
   }
 
   .invalid-input {
@@ -32,10 +35,19 @@ form {
   background-position-x: 102px;
   background-position-y: -48px;
 
+  @media only screen and (min-width: 576px) {
+    background-position-x: -30px;
+    background-position-y: 0px;
+    background-image: url("../../../../../assets/images/bg-shorten-desktop.svg");
+  }
   div {
     position: relative;
     width: 100%;
     height: 48px;
+    @media only screen and (min-width: 576px) {
+      width: 225px;
+      height: 61px;
+    }
   }
 
   .input {
@@ -43,6 +55,9 @@ form {
     flex-direction: column;
     height: 100%;
     gap: 4px;
+    @media only screen and (min-width: 576px) {
+      width: 100%;
+    }
   }
 
   input {
@@ -53,12 +68,31 @@ form {
     border-radius: 5px;
     border: none;
     outline: none;
+
+    &::placeholder {
+      color: rgb(160, 160, 160);
+    }
+
+    @media only screen and (min-width: 576px) {
+      height: 61px;
+      border-radius: 9px;
+      padding: 0.8rem 2rem;
+      font-size: 20px;
+      &::placeholder {
+        font-size: 20px;
+      }
+    }
   }
   label {
     width: 100%;
     color: rgb(243, 94, 94);
     font-style: italic;
     font-size: 12px;
+    @media only screen and (min-width: 576px) {
+      position: absolute;
+      bottom: -31px;
+      font-size: 17px;
+    }
   }
 }
 

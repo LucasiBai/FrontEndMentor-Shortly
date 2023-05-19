@@ -10,11 +10,20 @@ button {
   &:hover {
     opacity: 0.5;
   }
+
+  @media only screen and (min-width: 576px) {
+    border-radius: 9px;
+    font-size: 20px;
+  }
 }
 
 button.fill {
   position: absolute;
   width: 100%;
+  padding: 0.7rem 1rem;
+  @media only screen and (min-width: 576px) {
+    height: 100%;
+  }
 }
 
 button.clicked {
