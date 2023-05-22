@@ -40,4 +40,12 @@ describe('IconCardComponent', () => {
 
     expect(content.innerText).toEqual(mockData.content);
   });
+
+  // describe("Test number input",()=>{
+  //   it("Should render 3 'blank-space' div",()=>{
+  //     component.number = 4
+  //     fixture.detectChanges()
+
+  //   })
+  // })
 });

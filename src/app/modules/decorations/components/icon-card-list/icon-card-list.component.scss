@@ -5,6 +5,10 @@ section {
   gap: 5.6rem;
   position: relative;
   margin-top: 2.7rem;
+  @media only screen and (min-width: 576px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
 
   div {
     position: absolute;
@@ -25,6 +29,10 @@ section {
       width: 8px;
       border: none;
       background-color: hsl(180, 66%, 49%);
+      @media only screen and (min-width: 576px) {
+        width: 95%;
+        height: 8px;
+      }
     }
   }
 

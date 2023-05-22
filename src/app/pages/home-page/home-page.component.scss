@@ -57,10 +57,19 @@ main {
 
         gap: 1rem;
 
+        @media only screen and (min-width: 576px) {
+          gap: 1.2rem;
+        }
+
         p {
           max-width: 290px;
           font-size: 16px;
-          color: #919191;
+          color: #a3a3a3;
+          @media only screen and (min-width: 576px) {
+            text-align: center;
+            font-size: 18px;
+            max-width: 517px;
+          }
         }
       }
     }
@@ -100,7 +109,7 @@ main {
 
       p {
         text-align: center;
-        color: rgb(139, 139, 139);
+        color: #a3a3a3;
         font-size: 17px;
         max-width: 375px;
         @media only screen and (min-width: 576px) {
@@ -124,6 +133,10 @@ main {
         line-height: 44px;
         color: hsl(0deg 0% 20.47%);
         max-width: 375px;
+        @media only screen and (min-width: 576px) {
+          font-size: 39px;
+          max-width: 500px;
+        }
       }
 
       img {
