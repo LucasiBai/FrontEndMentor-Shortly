@@ -81,6 +81,9 @@ main {
       background-repeat: no-repeat;
       background-size: 100%;
 
+      @media only screen and (min-width: 576px) {
+        background-image: url("../../../assets/images/bg-boost-desktop.svg");
+      }
       height: 300px;
       display: flex;
       flex-direction: column;

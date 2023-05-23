@@ -1,7 +1,8 @@
 <section>
   <app-icon-card
-    *ngFor="let card of cardListData"
+    *ngFor="let card of cardListData; let i = index"
     [data]="card"
+    [number]="i + 1"
   ></app-icon-card>
   <div>
     <hr />

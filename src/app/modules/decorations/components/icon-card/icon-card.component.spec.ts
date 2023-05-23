@@ -9,7 +9,7 @@ const mockData: IconCardDataI = {
   icon: '../../../../assets/images/icon-detailed-records.svg',
 };
 
-describe('IconCardComponent', () => {
+fdescribe('IconCardComponent', () => {
   let component: IconCardComponent;
   let fixture: ComponentFixture<IconCardComponent>;
 
@@ -41,11 +41,23 @@ describe('IconCardComponent', () => {
     expect(content.innerText).toEqual(mockData.content);
   });
 
-  // describe("Test number input",()=>{
-  //   it("Should render 3 'blank-space' div",()=>{
-  //     component.number = 4
-  //     fixture.detectChanges()
+  describe('Test number input', () => {
+    it('Should be auto 1 value', () => {
+      const spaces =
+        fixture.debugElement.nativeElement.querySelectorAll('.blank-space');
 
-  //   })
-  // })
+      expect(spaces.length).toBeFalsy();
+      expect(component.number).toEqual(1);
+    });
+
+    it("Should render 3 'blank-space' div", () => {
+      component.number = 4;
+      fixture.detectChanges();
+
+      const spaces =
+        fixture.debugElement.nativeElement.querySelectorAll('.blank-space');
+
+      expect(spaces.length).toEqual(3);
+    });
+  });
 });
