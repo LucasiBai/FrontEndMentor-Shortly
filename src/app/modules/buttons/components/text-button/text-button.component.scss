@@ -8,6 +8,8 @@ button {
   border-radius: 200px;
   padding: 0.6rem 1rem;
   position: relative;
+
+  cursor: pointer;
   &:hover {
     opacity: 0.5;
   }

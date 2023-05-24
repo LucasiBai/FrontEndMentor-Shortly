@@ -1,44 +1,78 @@
 footer {
   background-color: hsl(255, 11%, 22%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  padding: 3rem 0;
-  gap: 3rem;
-
-  ul {
+  @media only screen and (min-width: 576px) {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    justify-content: center;
   }
-
-  .root-link {
+  span {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    gap: 1.3rem;
-    a {
-      color: rgb(255, 255, 255);
-      font-weight: 700;
-      font-size: 15px;
+    padding: 3rem 0;
+    gap: 3rem;
+
+    @media only screen and (min-width: 576px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1100px;
+      width: 100%;
     }
-    ul {
-      gap: 0.5rem;
-      a {
-        color: #979797;
-        font-weight: 500;
-        font-size: 14px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      @media only screen and (min-width: 576px) {
+        flex-direction: row;
       }
     }
-  }
 
-  .social-media {
-    gap: 1.5rem;
-    display: flex;
-    flex-direction: row;
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      @media only screen and (min-width: 576px) {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 7rem;
+        ul {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .root-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 1.3rem;
+      @media only screen and (min-width: 576px) {
+        align-items: flex-start;
+      }
+      a {
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        font-size: 15px;
+      }
+      ul {
+        gap: 0.5rem;
+        a {
+          color: #979797;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .social-media {
+      gap: 1.5rem;
+      display: flex;
+      flex-direction: row;
+    }
   }
 }

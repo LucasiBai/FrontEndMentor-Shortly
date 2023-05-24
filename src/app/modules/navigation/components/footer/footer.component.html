@@ -1,22 +1,26 @@
 <footer>
-  <img src="./assets/images/logo-invert.svg" alt="shortly-logo" />
-  <ul class="links">
-    <li class="root-link" *ngFor="let link of links">
-      <a routerLink="{{ link.root.path }}">
-        {{ link.root.label }}
-      </a>
-      <ul>
-        <li *ngFor="let sublink of link.children">
-          <a routerLink="{{ sublink.path }}">{{ sublink.label }}</a>
+  <span>
+    <img src="./assets/images/logo-invert.svg" alt="shortly-logo" />
+    <div>
+      <ul class="links">
+        <li class="root-link" *ngFor="let link of links">
+          <a routerLink="{{ link.root.path }}">
+            {{ link.root.label }}
+          </a>
+          <ul>
+            <li *ngFor="let sublink of link.children">
+              <a routerLink="{{ sublink.path }}">{{ sublink.label }}</a>
+            </li>
+          </ul>
         </li>
       </ul>
-    </li>
-  </ul>
-  <ul class="social-media">
-    <li class="media-link" *ngFor="let media of socialMedia">
-      <a href="{{ media.href }}" target="_blank">
-        <img src="{{ media.icon }}" alt="{{ media.media }}" />
-      </a>
-    </li>
-  </ul>
+      <ul class="social-media">
+        <li class="media-link" *ngFor="let media of socialMedia">
+          <a href="{{ media.href }}" target="_blank">
+            <img src="{{ media.icon }}" alt="{{ media.media }}" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </span>
 </footer>

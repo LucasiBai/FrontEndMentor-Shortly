@@ -7,6 +7,8 @@ button {
   color: white;
   background-color: hsl(180, 66%, 49%);
   transition: background ease-in 0.2s;
+
+  cursor: pointer;
   &:hover {
     opacity: 0.5;
   }
