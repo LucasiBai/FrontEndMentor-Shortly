@@ -6,14 +6,14 @@
       <a href="https://{{ linkData.shortLink }}" target="_blank">{{
         linkData.shortLink
       }}</a>
+      <div>
+        <app-square-button-text
+          (click)="copyLink()"
+          [clicked]="copied"
+          [fill]="true"
+          >{{ !copied ? "Copy" : "Copied!" }}</app-square-button-text
+        >
+      </div>
     </li>
   </ul>
-  <div>
-    <app-square-button-text
-      (click)="copyLink()"
-      [clicked]="copied"
-      [fill]="true"
-      >{{ !copied ? "Copy" : "Copied!" }}</app-square-button-text
-    >
-  </div>
 </article>
