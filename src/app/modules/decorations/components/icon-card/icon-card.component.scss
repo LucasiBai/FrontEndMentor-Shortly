@@ -46,6 +46,9 @@ article {
     line-height: 44px;
     color: hsl(0deg 0% 20.47%);
     max-width: 375px;
+    @media only screen and (min-width: 576px) {
+      text-align: start;
+    }
   }
 
   p {
