@@ -23,6 +23,9 @@ button.fill {
   position: absolute;
   width: 100%;
   padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media only screen and (min-width: 576px) {
     height: 100%;
   }

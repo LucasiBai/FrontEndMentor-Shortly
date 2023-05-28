@@ -51,10 +51,16 @@ article {
 
       a {
         color: hsl(180, 66%, 49%);
+        @media only screen and (min-width: 576px) {
+          font-size: 20px;
+        }
       }
       @media only screen and (min-width: 576px) {
         flex-direction: row;
         width: fit-content;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 20px;
       }
     }
   }

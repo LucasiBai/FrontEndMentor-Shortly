@@ -75,6 +75,9 @@ footer {
           color: #979797;
           font-weight: 500;
           font-size: 14px;
+          &:hover {
+            color: hsl(180, 66%, 49%);
+          }
         }
       }
     }
