@@ -51,13 +51,20 @@ export class ShortBoxComponent implements OnInit {
 
     const link = this.urlForm.value['url'];
 
-    this._short.shortLink(link).subscribe((link: ShortedLinkI) => {});
-    this.urlForm = this.initForm();
+    this._short.shortLink(link).subscribe(
+      (link: ShortedLinkI) => {
+        this.urlForm = this.initForm();
+      },
+      (error) => {
+        this.urlForm.setErrors({ pattern: true });
+      }
+    );
   }
 
   getErrorMessage(): string {
     const error = Object.keys(this.urlForm.get('url')?.errors || {})[0];
 
+    console.log(error);
     return this.errors[error];
   }
 }
