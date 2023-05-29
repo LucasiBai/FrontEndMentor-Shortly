@@ -1,4 +1,6 @@
-<button [ngClass]="{ fat: type === 'fat', large: type === 'large' }">
-  <ng-content></ng-content>
-  <div></div>
-</button>
+<span [ngClass]="{ fat: type === 'fat', large: type === 'large' }">
+  <button>
+    <ng-content></ng-content>
+    <div></div>
+  </button>
+</span>
