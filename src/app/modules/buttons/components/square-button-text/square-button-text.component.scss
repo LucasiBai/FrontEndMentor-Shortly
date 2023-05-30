@@ -1,36 +1,50 @@
-button {
-  padding: 0.7rem 3rem;
-  font-size: 17px;
-  font-weight: 600;
+span {
+  overflow: hidden;
+  background-color: white;
   border-radius: 6px;
-  border: none;
-  color: white;
-  background-color: hsl(180, 66%, 49%);
-  transition: background ease-in 0.2s;
+  position: relative;
 
-  cursor: pointer;
-  &:hover {
-    opacity: 0.5;
+  button {
+    padding: 0.7rem 3rem;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    color: white;
+    background-color: hsl(180, 66%, 49%);
+    transition: background ease-in 0.2s;
+
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+
+    @media only screen and (min-width: 576px) {
+      font-size: 20px;
+    }
   }
 
   @media only screen and (min-width: 576px) {
     border-radius: 9px;
-    font-size: 20px;
+  }
+  button.clicked {
+    background-color: hsl(257, 27%, 26%);
   }
 }
 
-button.fill {
+span.fill {
   position: absolute;
   width: 100%;
-  padding: 0.7rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.7rem 1rem;
+    width: 100%;
+    height: 100%;
+  }
   @media only screen and (min-width: 576px) {
     height: 100%;
   }
-}
-
-button.clicked {
-  background-color: hsl(257, 27%, 26%);
 }

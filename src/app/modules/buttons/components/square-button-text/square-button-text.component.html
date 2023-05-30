@@ -1,3 +1,5 @@
-<button [ngClass]="{ fill: fill, clicked: clicked }">
-  <ng-content></ng-content>
-</button>
+<span [ngClass]="{ fill: fill }">
+  <button [ngClass]="{ clicked: clicked }" #button>
+    <ng-content></ng-content>
+  </button>
+</span>

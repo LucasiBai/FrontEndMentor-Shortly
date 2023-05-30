@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 class TestTextButtonComponent {}
 
-describe('SquareButtonTextComponent', () => {
+fdescribe('SquareButtonTextComponent', () => {
   let component: SquareButtonTextComponent;
   let fixture: ComponentFixture<SquareButtonTextComponent>;
 
@@ -27,7 +27,7 @@ describe('SquareButtonTextComponent', () => {
   });
 
   it('Should be a button element', () => {
-    const button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('span');
 
     expect(button).toBeTruthy();
     expect(button.getAttribute('class')).not.toEqual('fill');
@@ -53,7 +53,7 @@ describe('SquareButtonTextComponent', () => {
     });
 
     it("Should has button with 'fill' class", () => {
-      const button = fixture.debugElement.nativeElement.querySelector('button');
+      const button = fixture.debugElement.nativeElement.querySelector('span');
 
       expect(button.getAttribute('class')).toEqual('fill');
     });
@@ -73,6 +73,28 @@ describe('SquareButtonTextComponent', () => {
       const button = fixture.debugElement.nativeElement.querySelector('button');
 
       expect(button.innerText).toEqual('Testing Text');
+    });
+  });
+
+  describe('Test fontSize value', () => {
+    it('Should set button font size equal to entered value', () => {
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+      const startFontSize = parseInt(getComputedStyle(button).fontSize);
+
+      const newFontSize = startFontSize - 4;
+      component.fontSize = newFontSize;
+
+      fixture.detectChanges();
+
+      const updatedButton =
+        fixture.debugElement.nativeElement.querySelector('button');
+      const updatedFontSize = parseInt(
+        getComputedStyle(updatedButton).fontSize
+      );
+
+      expect(startFontSize).not.toEqual(updatedFontSize);
+
+      expect(updatedFontSize).toEqual(newFontSize);
     });
   });
 });
