@@ -66,4 +66,22 @@ describe('TextButtonComponent', () => {
       expect(button.innerText).toEqual('Testing Text');
     });
   });
+
+  describe('Test fontSize value', () => {
+    it('Should set button font size equal to entered value', async () => {
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+      const startFontSize = parseInt(getComputedStyle(button).fontSize);
+
+      const newFontSize = startFontSize - 4;
+      component.fontSize = newFontSize;
+
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const updatedFontSize = parseInt(getComputedStyle(button).fontSize);
+
+      expect(startFontSize).not.toEqual(updatedFontSize);
+      expect(updatedFontSize).toEqual(newFontSize);
+    });
+  });
 });

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 class TestTextButtonComponent {}
 
-fdescribe('SquareButtonTextComponent', () => {
+describe('SquareButtonTextComponent', () => {
   let component: SquareButtonTextComponent;
   let fixture: ComponentFixture<SquareButtonTextComponent>;
 
@@ -77,7 +77,7 @@ fdescribe('SquareButtonTextComponent', () => {
   });
 
   describe('Test fontSize value', () => {
-    it('Should set button font size equal to entered value', () => {
+    it('Should set button font size equal to entered value', async () => {
       const button = fixture.debugElement.nativeElement.querySelector('button');
       const startFontSize = parseInt(getComputedStyle(button).fontSize);
 
@@ -85,15 +85,11 @@ fdescribe('SquareButtonTextComponent', () => {
       component.fontSize = newFontSize;
 
       fixture.detectChanges();
+      await fixture.whenStable();
 
-      const updatedButton =
-        fixture.debugElement.nativeElement.querySelector('button');
-      const updatedFontSize = parseInt(
-        getComputedStyle(updatedButton).fontSize
-      );
+      const updatedFontSize = parseInt(getComputedStyle(button).fontSize);
 
       expect(startFontSize).not.toEqual(updatedFontSize);
-
       expect(updatedFontSize).toEqual(newFontSize);
     });
   });
