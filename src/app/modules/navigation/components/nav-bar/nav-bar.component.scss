@@ -28,7 +28,9 @@ header {
         display: flex;
         align-items: center;
         gap: 2rem;
-
+        .sign-up {
+          width: 105px;
+        }
         li {
           a {
             font-size: 15px;
