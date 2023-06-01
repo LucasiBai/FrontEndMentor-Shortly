@@ -49,7 +49,9 @@ Your users should be able to:
 - Semantic HTML5 markup
 - [SCSS](https://sass-lang.com/)
 - Mobile-first workflow
+- Responsive Design
 - [Angular](https://angular.io/) - JS library
+- OOP
 - DBC
 
 ## Author
