@@ -20,7 +20,7 @@ const defaultLinks: ShortedLinkI[] = [
   },
 ];
 
-describe('ShortBoxComponent', () => {
+fdescribe('ShortBoxComponent', () => {
   let component: ShortBoxComponent;
   let fixture: ComponentFixture<ShortBoxComponent>;
 
@@ -114,6 +114,30 @@ describe('ShortBoxComponent', () => {
       expect(component.urlForm.valid).toBeFalse();
       expect(input.getAttribute('class')).toContain('invalid-input');
       expect(errorLabel.innerText).toEqual('Please add a link');
+    });
+
+    it('Should catch bad url', async () => {
+      component.urlForm.setValue({
+        url: 'http://localhost:4200/home',
+      });
+      fixture.detectChanges();
+
+      const input = fixture.debugElement.nativeElement.querySelector('input');
+      expect(input.getAttribute('class')).not.toContain('invalid-input');
+
+      component.shortLink();
+
+      await fixture.whenStable();
+      fixture.detectChanges();
+
+      const errorLabel =
+        fixture.debugElement.nativeElement.querySelector('label');
+
+      expect(component.urlForm.valid).toBeFalse();
+      expect(input.getAttribute('class')).toContain('invalid-input');
+      expect(errorLabel.innerText).toEqual(
+        'Something went wrong, please enter a valid url'
+      );
     });
 
     it('Should accept correct link', () => {

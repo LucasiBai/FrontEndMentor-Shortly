@@ -19,6 +19,7 @@ export class ShortBoxComponent implements OnInit {
   } = {
     required: 'Please add a link',
     pattern: 'Please enter a valid url',
+    error: 'Something went wrong, please enter a valid url',
   };
 
   lastestLinks: ShortedLinkI[] = [];
@@ -56,7 +57,7 @@ export class ShortBoxComponent implements OnInit {
         this.urlForm = this.initForm();
       },
       (error) => {
-        this.urlForm.setErrors({ pattern: true });
+        this.urlForm.get('url')?.setErrors({ error: true });
       }
     );
   }
