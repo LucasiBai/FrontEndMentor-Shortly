@@ -6,8 +6,11 @@ form {
   border-radius: 10px;
   background-color: hsl(257, 27%, 26%);
   gap: 1rem;
-  width: 78%;
+  width: 90%;
   margin: 0 auto 1.5rem;
+
+  max-width: 350px;
+  box-sizing: border-box;
 
   @media only screen and (min-width: 576px) {
     flex-direction: row;

@@ -54,8 +54,8 @@ main {
 
       article {
         app-short-box {
+          width: 100%;
           @media only screen and (min-width: 576px) {
-            width: 100%;
             transform: translate(0px, -90px);
           }
           transform: translate(0px, -79px);
