@@ -34,13 +34,12 @@ Your users should be able to:
 ### Solution Screenshot
 
 #### Desktop View
+
 ![2](https://github.com/LucasiBai/FrontEndMentor-Shortly/assets/99888705/ac5b38b6-d04a-4513-8bf2-784f5cee6979)
 
-#### Mobile View 
+#### Mobile View
+
 ![Peek 2023-06-04 14-10](https://github.com/LucasiBai/FrontEndMentor-Shortly/assets/99888705/8ab9da8e-7639-4be0-8cd7-6353129b533f)
-
-
-
 
 ### Links
 
@@ -55,6 +54,7 @@ Your users should be able to:
 - Mobile-first workflow
 - Responsive Design
 - [Angular](https://angular.io/) - JS library
+- [NGRX](https://ngrx.io/)
 - OOP
 - DBC
 
