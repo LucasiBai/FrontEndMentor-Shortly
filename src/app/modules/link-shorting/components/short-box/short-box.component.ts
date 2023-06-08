@@ -3,10 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShortedLinkI } from '../../models/shorted-link-i';
 import { assert } from 'ts-essentials';
 import { Store } from '@ngrx/store';
-import { loadShortedLinks } from '../../state/actions/link-shorting.actions';
+import {
+  loadShortedLinks,
+  loadedShortedLinks,
+} from '../../state/actions/link-shorting.actions';
 import { Observable } from 'rxjs';
-import { selectLoadingLinks } from '../../state/selectors/link-shorting.selectors';
+import {
+  selectListLinks,
+  selectLoadingLinks,
+} from '../../state/selectors/link-shorting.selectors';
 import { LoadingService } from 'src/app/modules/decorations/services/loading.service';
+import { ShortLinkService } from '../../services/short-link.service';
 
 @Component({
   selector: 'app-short-box',
@@ -17,7 +24,8 @@ export class ShortBoxComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _store: Store<any>,
-    private _loader: LoadingService
+    private _loader: LoadingService,
+    private _short: ShortLinkService
   ) {}
 
   urlForm!: FormGroup;
@@ -37,14 +45,19 @@ export class ShortBoxComponent implements OnInit {
   ngOnInit(): void {
     this.urlForm = this.initForm();
 
+    this._store.select(selectListLinks).subscribe((links: any) => {
+      this.lastestLinks = links.reverse();
+    });
+
     this._store
       .select(selectLoadingLinks)
       .subscribe((isLoading: boolean) => (this._loader.setLoading = isLoading));
 
     this._store.dispatch(loadShortedLinks());
-    // this._short.shortedLinks.subscribe(
-    //   (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
-    // );
+
+    this._short.shortedLinks.subscribe((links: ShortedLinkI[]) => {
+      this._store.dispatch(loadedShortedLinks({ links: links }));
+    });
   }
 
   initForm(): FormGroup {
