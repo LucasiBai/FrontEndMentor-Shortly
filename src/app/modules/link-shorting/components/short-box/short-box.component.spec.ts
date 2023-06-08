@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ShortBoxComponent } from './short-box.component';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsModule } from 'src/app/modules/buttons/buttons.module';
-import { ShortLinkService } from '../../services/short-link.service';
+// import { ShortLinkService } from '../../services/short-link.service';
 import { ShortedLinkI } from '../../models/shorted-link-i';
 
 const defaultLinks: ShortedLinkI[] = [
@@ -48,25 +48,25 @@ fdescribe('ShortBoxComponent', () => {
     expect(sendButton).toBeTruthy();
   });
 
-  describe('Test localData render', () => {
-    let service: ShortLinkService;
+  // describe('Test localData render', () => {
+  //   let service: ShortLinkService;
 
-    beforeEach(() => {
-      localStorage.clear();
-      service = TestBed.inject(ShortLinkService);
-    });
+  //   beforeEach(() => {
+  //     localStorage.clear();
+  //     service = TestBed.inject(ShortLinkService);
+  //   });
 
-    afterAll(() => {
-      localStorage.clear();
-    });
+  //   afterAll(() => {
+  //     localStorage.clear();
+  //   });
 
-    it('Should render link-card', () => {
-      const linkList =
-        fixture.debugElement.nativeElement.querySelectorAll('app-link-card');
+  //   it('Should render link-card', () => {
+  //     const linkList =
+  //       fixture.debugElement.nativeElement.querySelectorAll('app-link-card');
 
-      expect(linkList).toBeTruthy();
-    });
-  });
+  //     expect(linkList).toBeTruthy();
+  //   });
+  // });
 
   describe('Test Form Control', () => {
     it('Should contain validations', () => {
@@ -149,38 +149,38 @@ fdescribe('ShortBoxComponent', () => {
     });
   });
 
-  describe('Test shortLink()', () => {
-    let service: ShortLinkService;
+  // describe('Test shortLink()', () => {
+  //   let service: ShortLinkService;
 
-    beforeEach(() => {
-      localStorage.clear();
-      service = TestBed.inject(ShortLinkService);
-    });
+  //   beforeEach(() => {
+  //     localStorage.clear();
+  //     service = TestBed.inject(ShortLinkService);
+  //   });
 
-    afterAll(() => {
-      localStorage.clear();
-    });
+  //   afterAll(() => {
+  //     localStorage.clear();
+  //   });
 
-    it('Should short link', () => {
-      component.urlForm.setValue({
-        url: 'https://github.com/LucasiBai',
-      });
+  //   it('Should short link', () => {
+  //     component.urlForm.setValue({
+  //       url: 'https://github.com/LucasiBai',
+  //     });
 
-      component.shortLink();
+  //     component.shortLink();
 
-      service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
-        expect(links[0].originalLink).toEqual('https://github.com/LucasiBai');
-        expect(component.lastestLinks).toEqual(links);
-      });
+  //     service.shortedLinks.subscribe((links: ShortedLinkI[]) => {
+  //       expect(links[0].originalLink).toEqual('https://github.com/LucasiBai');
+  //       expect(component.lastestLinks).toEqual(links);
+  //     });
 
-      expect(component.urlForm.value['url']).toBeFalsy();
-    });
+  //     expect(component.urlForm.value['url']).toBeFalsy();
+  //   });
 
-    it('Should lastestLinks starts with shortedLinks data', () => {
-      localStorage.setItem('links', JSON.stringify(defaultLinks));
-      fixture.detectChanges();
+  //   it('Should lastestLinks starts with shortedLinks data', () => {
+  //     localStorage.setItem('links', JSON.stringify(defaultLinks));
+  //     fixture.detectChanges();
 
-      expect(component.lastestLinks).toEqual(defaultLinks);
-    });
-  });
+  //     expect(component.lastestLinks).toEqual(defaultLinks);
+  //   });
+  // });
 });

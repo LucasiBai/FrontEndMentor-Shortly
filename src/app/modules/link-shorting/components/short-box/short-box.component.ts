@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShortedLinkI } from '../../models/shorted-link-i';
-import { ShortLinkService } from '../../services/short-link.service';
 import { assert } from 'ts-essentials';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-short-box',
@@ -10,7 +10,7 @@ import { assert } from 'ts-essentials';
   styleUrls: ['./short-box.component.scss'],
 })
 export class ShortBoxComponent implements OnInit {
-  constructor(private _fb: FormBuilder, private _short: ShortLinkService) {}
+  constructor(private _fb: FormBuilder, private _store: Store<any>) {}
 
   urlForm!: FormGroup;
 
@@ -27,9 +27,9 @@ export class ShortBoxComponent implements OnInit {
   ngOnInit(): void {
     this.urlForm = this.initForm();
 
-    this._short.shortedLinks.subscribe(
-      (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
-    );
+    // this._short.shortedLinks.subscribe(
+    //   (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
+    // );
   }
 
   initForm(): FormGroup {
@@ -52,14 +52,14 @@ export class ShortBoxComponent implements OnInit {
 
     const link = this.urlForm.value['url'];
 
-    this._short.shortLink(link).subscribe(
-      (link: ShortedLinkI) => {
-        this.urlForm = this.initForm();
-      },
-      (error) => {
-        this.urlForm.get('url')?.setErrors({ error: true });
-      }
-    );
+    // this._short.shortLink(link).subscribe(
+    //   (link: ShortedLinkI) => {
+    //     this.urlForm = this.initForm();
+    //   },
+    //   (error) => {
+    //     this.urlForm.get('url')?.setErrors({ error: true });
+    //   }
+    // );
   }
 
   getErrorMessage(): string {
