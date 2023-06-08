@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShortedLinkI } from '../../models/shorted-link-i';
 import { assert } from 'ts-essentials';
 import { Store } from '@ngrx/store';
+import { loadShortedLinks } from '../../state/actions/link-shorting.actions';
 
 @Component({
   selector: 'app-short-box',
@@ -27,6 +28,7 @@ export class ShortBoxComponent implements OnInit {
   ngOnInit(): void {
     this.urlForm = this.initForm();
 
+    this._store.dispatch(loadShortedLinks());
     // this._short.shortedLinks.subscribe(
     //   (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
     // );
