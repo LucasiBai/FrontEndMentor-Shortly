@@ -53,8 +53,7 @@ Your users should be able to:
 - [SCSS](https://sass-lang.com/)
 - Mobile-first workflow
 - Responsive Design
-- [Angular](https://angular.io/) - JS library
-- [NGRX](https://ngrx.io/)
+- [Angular 16](https://angular.io/) - JS library
 - OOP
 - DBC
 
