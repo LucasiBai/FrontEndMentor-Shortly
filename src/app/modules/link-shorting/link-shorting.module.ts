@@ -8,8 +8,9 @@ import { LinkCardComponent } from './components/link-card/link-card.component';
 import { LoaderInterceptor } from '../decorations/interceptors/loader.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { linksReducer } from './state/reducers/link-shorting.reducer';
 import { ROOT_REDUCERS } from './state/link-shorting.state';
+import { EffectsModule } from '@ngrx/effects';
+import { LinkShortingEffects } from './state/effects/link-shorting.effects';
 
 @NgModule({
   declarations: [ShortBoxComponent, LinkCardComponent],
@@ -19,6 +20,7 @@ import { ROOT_REDUCERS } from './state/link-shorting.state';
     ReactiveFormsModule,
     ButtonsModule,
     StoreModule.forRoot(ROOT_REDUCERS),
+    EffectsModule.forRoot([LinkShortingEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   exports: [ShortBoxComponent],
