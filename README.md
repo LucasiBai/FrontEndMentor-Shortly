@@ -54,6 +54,7 @@ Your users should be able to:
 - Mobile-first workflow
 - Responsive Design
 - [Angular 16](https://angular.io/) - JS library
+- [NGRX](https://ngrx.io/)
 - OOP
 - DBC
 
