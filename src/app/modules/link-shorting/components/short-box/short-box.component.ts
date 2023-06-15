@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { loadShortedLinks } from '../../state/actions/link-shorting.actions';
 
 import { selectListLinks } from '../../state/selectors/link-shorting.selectors';
+import { ShortLinkService } from '../../services/short-link.service';
 
 @Component({
   selector: 'app-short-box',
@@ -13,7 +14,11 @@ import { selectListLinks } from '../../state/selectors/link-shorting.selectors';
   styleUrls: ['./short-box.component.scss'],
 })
 export class ShortBoxComponent implements OnInit {
-  constructor(private _fb: FormBuilder, private _store: Store<any>) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _short: ShortLinkService,
+    private _store: Store<any>
+  ) {}
 
   urlForm!: FormGroup;
 
@@ -33,7 +38,7 @@ export class ShortBoxComponent implements OnInit {
     this._store.dispatch(loadShortedLinks());
 
     this._store.select(selectListLinks).subscribe((links: any) => {
-      this.lastestLinks = links.reverse();
+      this.lastestLinks = [...links].reverse();
     });
   }
 
@@ -57,20 +62,19 @@ export class ShortBoxComponent implements OnInit {
 
     const link = this.urlForm.value['url'];
 
-    // this._short.shortLink(link).subscribe(
-    //   (link: ShortedLinkI) => {
-    //     this.urlForm = this.initForm();
-    //   },
-    //   (error) => {
-    //     this.urlForm.get('url')?.setErrors({ error: true });
-    //   }
-    // );
+    this._short.shortLink(link).subscribe(
+      (link: ShortedLinkI) => {
+        this.urlForm = this.initForm();
+      },
+      (error) => {
+        this.urlForm.get('url')?.setErrors({ error: true });
+      }
+    );
   }
 
   getErrorMessage(): string {
     const error = Object.keys(this.urlForm.get('url')?.errors || {})[0];
 
-    console.log(error);
     return this.errors[error];
   }
 }

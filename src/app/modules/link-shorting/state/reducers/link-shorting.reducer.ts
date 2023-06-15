@@ -1,10 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 
 import {
+  addShortedLink,
   loadShortedLinks,
   loadedShortedLinks,
-  shortLink,
-  shortedLink,
 } from '../actions/link-shorting.actions';
 
 import { LinkStateI } from '../../models/link-state-i';
@@ -18,5 +17,9 @@ export const linksReducer = createReducer(
     ...state,
     loading: false,
     links,
+  })),
+  on(addShortedLink, (state, link) => ({
+    loading: false,
+    links: [...state.links.slice(-2), link],
   }))
 );
