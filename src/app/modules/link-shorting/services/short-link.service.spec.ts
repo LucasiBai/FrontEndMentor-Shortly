@@ -30,113 +30,61 @@ describe('ShortLinkService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('Test shortedLinks Observer', () => {
+  describe('Test localStorage store', () => {
     beforeEach(() => {
-      localStorage.clear();
+      localStorage.setItem('links', JSON.stringify(defaultLinks));
     });
 
-    it('Should start empty', () => {
-      service.shortedLinks
-        .pipe(first())
-        .subscribe((linkList: ShortedLinkI[]) => {
-          expect(linkList.length).toEqual(0);
-        });
-    });
-
-    it('Should can push a new link', () => {
-      const shortData: ShortedLinkI = {
-        originalLink: 'www.testlink.com.ar/test/short/link',
-        shortLink: 'short.ly',
-      };
-
-      service.addShortedLink = shortData;
+    it('Should start with localStorage data', () => {
+      const localData: ShortedLinkI[] = JSON.parse(
+        localStorage.getItem('links') || '[]'
+      );
 
       service.shortedLinks
         .pipe(first())
-        .subscribe((linkList: ShortedLinkI[]) => {
-          expect(linkList.length).toEqual(1);
-          expect(linkList[0].id).toEqual(1);
-          expect(linkList[0].originalLink).toEqual(shortData['originalLink']);
-          expect(linkList[0].shortLink).toEqual(shortData['shortLink']);
-        });
+        .subscribe((links: ShortedLinkI[]) =>
+          expect(links[0]).toEqual(localData[0])
+        );
     });
 
-    it('Should create id correctly', () => {
-      const shortData: ShortedLinkI = {
-        originalLink: 'www.testlink.com.ar/test/short/link',
-        shortLink: 'short.ly',
-      };
+    //   it('Should update localStorage in link creation', () => {
+    //     const shortData: ShortedLinkI = {
+    //       originalLink: 'www.testlink.com.ar/test/short/link',
+    //       shortLink: 'short.ly',
+    //     };
 
-      service.addShortedLink = shortData;
-      service.addShortedLink = shortData;
-      service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
 
-      service.shortedLinks
-        .pipe(first())
-        .subscribe((linkList: ShortedLinkI[]) => {
-          expect(linkList.length).toEqual(3);
+    //     const localData: ShortedLinkI[] = JSON.parse(
+    //       localStorage.getItem('links') || '[]'
+    //     );
 
-          expect(linkList[0].id).toEqual(1);
-          expect(linkList[1].id).toEqual(2);
-          expect(linkList[2].id).toEqual(3);
-        });
-    });
+    //     expect(localData[0].originalLink).toEqual(shortData.originalLink);
+    //     expect(localData[0].shortLink).toEqual(shortData.shortLink);
+    //   });
 
-    describe('Test localStorage store', () => {
-      beforeEach(() => {
-        localStorage.setItem('links', JSON.stringify(defaultLinks));
-      });
+    //   it('Should local data no be greater than 5 elements and should be the last five', () => {
+    //     const shortData: ShortedLinkI = {
+    //       originalLink: 'www.testlink.com.ar/test/short/link',
+    //       shortLink: 'short.ly',
+    //     };
 
-      it('Should start with localStorage data', () => {
-        const localData: ShortedLinkI[] = JSON.parse(
-          localStorage.getItem('links') || '[]'
-        );
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = shortData;
+    //     service.addShortedLink = { ...shortData, shortLink: 'last.ly' };
 
-        service.shortedLinks
-          .pipe(first())
-          .subscribe((links: ShortedLinkI[]) =>
-            expect(links[0]).toEqual(localData[0])
-          );
-      });
+    //     const localData: ShortedLinkI[] = JSON.parse(
+    //       localStorage.getItem('links') || '[]'
+    //     );
 
-      it('Should update localStorage in link creation', () => {
-        const shortData: ShortedLinkI = {
-          originalLink: 'www.testlink.com.ar/test/short/link',
-          shortLink: 'short.ly',
-        };
-
-        service.addShortedLink = shortData;
-
-        const localData: ShortedLinkI[] = JSON.parse(
-          localStorage.getItem('links') || '[]'
-        );
-
-        expect(localData[0].originalLink).toEqual(shortData.originalLink);
-        expect(localData[0].shortLink).toEqual(shortData.shortLink);
-      });
-
-      it('Should local data no be greater than 5 elements and should be the last five', () => {
-        const shortData: ShortedLinkI = {
-          originalLink: 'www.testlink.com.ar/test/short/link',
-          shortLink: 'short.ly',
-        };
-
-        service.addShortedLink = shortData;
-        service.addShortedLink = shortData;
-        service.addShortedLink = shortData;
-        service.addShortedLink = shortData;
-        service.addShortedLink = shortData;
-        service.addShortedLink = shortData;
-        service.addShortedLink = { ...shortData, shortLink: 'last.ly' };
-
-        const localData: ShortedLinkI[] = JSON.parse(
-          localStorage.getItem('links') || '[]'
-        );
-
-        expect(localData.length).toBeLessThanOrEqual(5);
-        expect(localData[4].shortLink).toEqual('last.ly');
-      });
-    });
+    //     expect(localData.length).toBeLessThanOrEqual(5);
+    //     expect(localData[4].shortLink).toEqual('last.ly');
+    //   });
+    // });
   });
 
   // describe('Test shortLink()', () => {

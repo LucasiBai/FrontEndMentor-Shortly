@@ -1,44 +1,49 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { Observable, delay, first, map, of, tap } from 'rxjs';
 
 import { Config } from '../config';
 import { DataI } from '../models/data-i';
 import { ShortedLinkI } from '../models/shorted-link-i';
+import { Store } from '@ngrx/store';
+import { addShortedLink } from '../state/actions/link-shorting.actions';
+import { selectListLinks } from '../state/selectors/link-shorting.selectors';
 
 const initData: ShortedLinkI[] = JSON.parse(
-  localStorage.getItem(Config.tagName) || '[]'
+  localStorage.getItem(Config.tagName) ||
+    '	[{"id":1,"originalLink":"https://www.github.com/lucasibai","shortLink":"shrtco.de/CsL7sK"}]'
 );
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShortLinkService {
-  constructor(private _http: HttpClient) {}
+  private currentLinks!: readonly ShortedLinkI[];
+
+  constructor(private _http: HttpClient, private _store: Store<any>) {
+    this._store
+      .select(selectListLinks)
+      .subscribe((links) => (this.currentLinks = links));
+  }
 
   private apiURL: string = Config.apiURL;
   private localTagName: string = Config.tagName;
 
-  private shortLink$: BehaviorSubject<ShortedLinkI[]> = new BehaviorSubject<
-    ShortedLinkI[]
-  >(initData);
+  public get shortedLinks(): Observable<ShortedLinkI[]> {
+    const shortedLinks = initData;
+
+    return of(shortedLinks).pipe(first(), delay(300));
+  }
 
   public set addShortedLink(shortLink: ShortedLinkI) {
-    const currentLinks: ShortedLinkI[] = [...this.shortLink$.value];
-
-    const newId = currentLinks.length === 0 ? 1 : currentLinks.length + 1;
-
     const updatedData: ShortedLinkI[] = [
-      ...currentLinks.slice(-4),
-      { id: newId, ...shortLink },
+      ...this.currentLinks.slice(-2),
+      shortLink,
     ];
 
     localStorage.setItem(this.localTagName, JSON.stringify(updatedData));
-    this.shortLink$.next(updatedData);
-  }
 
-  public get shortedLinks(): Observable<ShortedLinkI[]> {
-    return this.shortLink$.asObservable();
+    this._store.dispatch(addShortedLink(shortLink));
   }
 
   public shortLink(link: string): Observable<ShortedLinkI> {

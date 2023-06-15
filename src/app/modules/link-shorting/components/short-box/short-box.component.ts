@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShortedLinkI } from '../../models/shorted-link-i';
-import { ShortLinkService } from '../../services/short-link.service';
 import { assert } from 'ts-essentials';
+import { Store } from '@ngrx/store';
+import { loadShortedLinks } from '../../state/actions/link-shorting.actions';
+
+import { selectListLinks } from '../../state/selectors/link-shorting.selectors';
+import { ShortLinkService } from '../../services/short-link.service';
 
 @Component({
   selector: 'app-short-box',
@@ -10,7 +14,11 @@ import { assert } from 'ts-essentials';
   styleUrls: ['./short-box.component.scss'],
 })
 export class ShortBoxComponent implements OnInit {
-  constructor(private _fb: FormBuilder, private _short: ShortLinkService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _short: ShortLinkService,
+    private _store: Store<any>
+  ) {}
 
   urlForm!: FormGroup;
 
@@ -27,9 +35,11 @@ export class ShortBoxComponent implements OnInit {
   ngOnInit(): void {
     this.urlForm = this.initForm();
 
-    this._short.shortedLinks.subscribe(
-      (links: ShortedLinkI[]) => (this.lastestLinks = links.slice(-3).reverse())
-    );
+    this._store.dispatch(loadShortedLinks());
+
+    this._store.select(selectListLinks).subscribe((links: any) => {
+      this.lastestLinks = [...links].reverse();
+    });
   }
 
   initForm(): FormGroup {
@@ -65,7 +75,6 @@ export class ShortBoxComponent implements OnInit {
   getErrorMessage(): string {
     const error = Object.keys(this.urlForm.get('url')?.errors || {})[0];
 
-    console.log(error);
     return this.errors[error];
   }
 }
